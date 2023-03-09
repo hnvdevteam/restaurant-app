@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/screens/dessertScreen.dart';
@@ -145,6 +147,51 @@ class MenuCard extends StatefulWidget {
 
 class _MenuCardState extends State<MenuCard>
     with SingleTickerProviderStateMixin {
+  AnimationController controller;
+
+  Animation<double> scale;
+  Animation<double> translate;
+  Animation<double> opacity;
+  Animation<double> rotation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    scale = Tween<double>(begin: 1, end: 0.0).animate(
+      CurvedAnimation(parent: controller, curve: Curves.easeInOutBack),
+    );
+    translate = Tween<double>(begin: 0, end: 60).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeInOutBack,
+      ),
+    );
+    opacity = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(0.3, .5),
+      ),
+    );
+    rotation = Tween<double>(begin: 0, end: 0).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(0, .7, curve: Curves.easeInOut),
+      ),
+    );
+  }
+
+  _open() {
+    controller.forward();
+  }
+
+  _close() {
+    controller.reverse();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -212,38 +259,99 @@ class _MenuCardState extends State<MenuCard>
               ),
               Container(
                 height: 80,
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: ShapeDecoration(
-                        shape: CircleBorder(),
-                        color: Colors.white,
-                        shadows: [
-                          BoxShadow(
-                            color: AppColor.placeholder,
-                            offset: Offset(0, 2),
-                            blurRadius: 5,
-                          )
-                        ]),
-                    child: Image.asset(
-                      Helper.getAssetName("next_filled.png", "virtual"),
-                    ),
-                  ),
+                child: AnimatedBuilder(
+                  animation: controller.view,
+                  builder: (context, _) {
+                    return Transform.rotate(
+                      angle: rotation.value,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          _buildMenuOption(
+                            angle: 180,
+                            icon: const Icon(
+                              Icons.facebook,
+                              color: Colors.white,
+                            ),
+                            color: const Color(0xFF0073F5),
+                          ),
+                          _buildMenuOption(
+                            angle: 180,
+                            icon: const Icon(
+                              Icons.facebook,
+                              color: Colors.white,
+                            ),
+                            color: const Color(0xFF0073F5),
+                          ),
+                          Transform.scale(
+                            scale: scale.value - 1,
+                            child: FloatingActionButton(
+                              backgroundColor: Colors.red,
+                              onPressed: _close,
+                              child: const Icon(Icons.close),
+                            ),
+                          ),
+                          Transform.scale(
+                            scale: scale.value,
+                            child: FloatingActionButton(
+                              backgroundColor: Colors.green,
+                              onPressed: _open,
+                              child: const Icon(Icons.menu),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  // child: Container(
+                  //   height: 40,
+                  //   width: 40,
+                  //   decoration: ShapeDecoration(
+                  //       shape: CircleBorder(),
+                  //       color: Colors.white,
+                  //       shadows: [
+                  //         BoxShadow(
+                  //           color: AppColor.placeholder,
+                  //           offset: Offset(0, 2),
+                  //           blurRadius: 5,
+                  //         )
+                  //       ]),
+                  //   child: Image.asset(
+                  //     Helper.getAssetName("next_filled.png", "virtual"),
+                  //   ),
+                  // ),
                 ),
               ),
             ],
           ),
         ),
-        // SizedBox(
-        //   height: 80,
-        //   child: Align(
-        //     alignment: Alignment.centerLeft,
-        //     child: _image,
-        //   ),
-        // ),
       ],
     );
+  }
+
+  Widget _buildMenuOption({
+    double angle,
+    Widget icon,
+    Color color,
+  }) {
+    return Opacity(
+      opacity: opacity.value,
+      child: Transform(
+        transform: Matrix4.identity()
+          ..translate(
+            translate.value * cos(degreeToRadian(angle)),
+            translate.value * sin(degreeToRadian(angle)),
+          ),
+        child: FloatingActionButton(
+          backgroundColor: color,
+          child: icon,
+          onPressed: () {},
+        ),
+      ),
+    );
+  }
+
+  double degreeToRadian(double degree) {
+    return degree * pi / 180;
   }
 }
