@@ -161,8 +161,11 @@ class _MenuCardState extends State<MenuCard>
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-    scale = Tween<double>(begin: 1, end: 0.0).animate(
-      CurvedAnimation(parent: controller, curve: Curves.easeInOutBack),
+    scale = Tween<double>(begin: 1, end: 0).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeInOutBack,
+      ),
     );
     translate = Tween<double>(begin: 0, end: 60).animate(
       CurvedAnimation(
@@ -176,12 +179,44 @@ class _MenuCardState extends State<MenuCard>
         curve: const Interval(0.3, .5),
       ),
     );
-    rotation = Tween<double>(begin: 0, end: 0).animate(
+    rotation = Tween<double>(begin: pi, end: 0).animate(
       CurvedAnimation(
         parent: controller,
         curve: const Interval(0, .7, curve: Curves.easeInOut),
       ),
     );
+  }
+
+  Widget _buildMenuOption({
+    double angle,
+    Widget icon,
+    Color color,
+    double translateEnd,
+  }) {
+    return Opacity(
+      opacity: opacity.value,
+      child: Transform(
+        transform: Matrix4.identity()
+          ..translate(
+            (translate.value - translateEnd) * cos(degreeToRadian(angle)),
+          ),
+        child: FloatingActionButton(
+          backgroundColor: color,
+          child: icon,
+          onPressed: () {
+            // if (controller.status == controller.isCompleted) {
+            //   controller.reverse();
+            // } else {
+            //   controller.forward();
+            // }
+          },
+        ),
+      ),
+    );
+  }
+
+  double degreeToRadian(double degree) {
+    return degree * pi / 180;
   }
 
   _open() {
@@ -262,64 +297,49 @@ class _MenuCardState extends State<MenuCard>
                 child: AnimatedBuilder(
                   animation: controller.view,
                   builder: (context, _) {
-                    return Transform.rotate(
-                      angle: rotation.value,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          _buildMenuOption(
-                            angle: 180,
-                            icon: const Icon(
-                              Icons.facebook,
-                              color: Colors.white,
-                            ),
-                            color: const Color(0xFF0073F5),
+                    return Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        _buildMenuOption(
+                          translateEnd: 0,
+                          angle: 180,
+                          icon: const Icon(
+                            Icons.add,
+                            color: Colors.white,
                           ),
-                          _buildMenuOption(
-                            angle: 180,
-                            icon: const Icon(
-                              Icons.facebook,
-                              color: Colors.white,
-                            ),
-                            color: const Color(0xFF0073F5),
+                          color: const Color(0xFF0073F5),
+                        ),
+                        _buildMenuOption(
+                          translateEnd: -60,
+                          angle: 180,
+                          icon: const Icon(
+                            Icons.facebook,
+                            color: Colors.white,
                           ),
-                          Transform.scale(
-                            scale: scale.value - 1,
-                            child: FloatingActionButton(
-                              backgroundColor: Colors.red,
-                              onPressed: _close,
-                              child: const Icon(Icons.close),
-                            ),
+                          color: const Color(0xFF0073F5),
+                        ),
+                        Transform.scale(
+                          scale: scale.value - 1,
+                          child: FloatingActionButton(
+                            backgroundColor: Colors.red,
+                            onPressed: _close,
+                            child: const Icon(Icons.close),
                           ),
-                          Transform.scale(
+                        ),
+                        Transform.rotate(
+                          angle: rotation.value,
+                          child: Transform.scale(
                             scale: scale.value,
                             child: FloatingActionButton(
-                              backgroundColor: Colors.green,
+                              backgroundColor: Colors.greenAccent,
                               onPressed: _open,
                               child: const Icon(Icons.menu),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     );
                   },
-                  // child: Container(
-                  //   height: 40,
-                  //   width: 40,
-                  //   decoration: ShapeDecoration(
-                  //       shape: CircleBorder(),
-                  //       color: Colors.white,
-                  //       shadows: [
-                  //         BoxShadow(
-                  //           color: AppColor.placeholder,
-                  //           offset: Offset(0, 2),
-                  //           blurRadius: 5,
-                  //         )
-                  //       ]),
-                  //   child: Image.asset(
-                  //     Helper.getAssetName("next_filled.png", "virtual"),
-                  //   ),
-                  // ),
                 ),
               ),
             ],
@@ -327,31 +347,5 @@ class _MenuCardState extends State<MenuCard>
         ),
       ],
     );
-  }
-
-  Widget _buildMenuOption({
-    double angle,
-    Widget icon,
-    Color color,
-  }) {
-    return Opacity(
-      opacity: opacity.value,
-      child: Transform(
-        transform: Matrix4.identity()
-          ..translate(
-            translate.value * cos(degreeToRadian(angle)),
-            translate.value * sin(degreeToRadian(angle)),
-          ),
-        child: FloatingActionButton(
-          backgroundColor: color,
-          child: icon,
-          onPressed: () {},
-        ),
-      ),
-    );
-  }
-
-  double degreeToRadian(double degree) {
-    return degree * pi / 180;
   }
 }
