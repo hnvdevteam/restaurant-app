@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../const/colors.dart';
 import '../screens/homeScreen.dart';
-import '../screens/menuScreen.dart';
+import '../screens/menuScreen/menuScreen.dart';
 import '../screens/moreScreen.dart';
 import '../screens/offerScreen.dart';
 import '../screens/profileScreen.dart';
