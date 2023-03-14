@@ -22,6 +22,7 @@ class MenuScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
+                    vertical: 10,
                     horizontal: 20,
                   ),
                   child: Row(
@@ -38,15 +39,13 @@ class MenuScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 SearchBar(title: "Search Food"),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                SizedBox(
-                  height: Helper.getScreenHeight(context) * 0.6,
-                  width: Helper.getScreenWidth(context),
+                Expanded(
                   child: Stack(
                     children: [
                       Container(
@@ -62,7 +61,10 @@ class MenuScreen extends StatelessWidget {
                             color: AppColor.orange),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                          left: 10,
+                        ),
                         child: ListView.separated(
                             itemBuilder: (context, index) {
                               final item = items[index];
@@ -91,40 +93,52 @@ class MenuScreen extends StatelessWidget {
     );
   }
 
-  Widget buildListTile(Item items) => Stack(
-        children: [
-          Container(
-            height: 80,
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 80,
-            ),
-            decoration: BoxDecoration(
-              color: Color.fromARGB(158, 235, 235, 235),
-            ),
+  Widget buildListTile(Item items) => Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            bottomLeft: Radius.circular(10),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 16,
+          color: Color.fromARGB(200, 235, 235, 235),
+        ),
+        child: InkWell(
+          onTap: () {},
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 10,
             ),
-            leading: CircleAvatar(
-              radius: 28,
-              backgroundImage: NetworkImage(items.url),
-            ),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                Text(
-                  items.name,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Container(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      items.url,
+                      width: 75,
+                      height: 75,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 4),
-                Text(items.info),
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        items.name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      Text("Address: " + items.info),
+                    ],
+                  ),
+                ),
               ],
             ),
-            onTap: () {},
           ),
-        ],
+        ),
       );
 }

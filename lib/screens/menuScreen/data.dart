@@ -4,33 +4,33 @@ class Data {
   static const chats = <Item>[
     Item(
       url:
-          'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80',
-      name: 'Restaurant 01',
-      info: 'Address 01',
+          'https://media-cdn.tripadvisor.com/media/photo-s/1c/1c/2f/22/centonze-restaurant.jpg',
+      name: 'Restaurant Octave',
+      info: '3509 Washington Street, Texas',
     ),
     Item(
       url:
-          'https://images.unsplash.com/photo-1569913486515-b74bf7751574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80',
-      name: 'Restaurant 02',
-      info: 'Address 02',
+          'https://media-cdn.tripadvisor.com/media/photo-s/22/ac/cb/21/luxury-decoration-essence.jpg',
+      name: 'Restaurant Across North America',
+      info: '3393 Adams Drive, San Angelo',
     ),
     Item(
       url:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-      name: 'Restaurant 03',
-      info: 'Address 03',
+          'https://img2.10bestmedia.com/Images/Photos/228237/p-8-6-lg_54_990x660_201406020229.jpg',
+      name: 'Moonhouse Restaurant',
+      info: '3139 Stanley Avenue, New York',
     ),
     Item(
       url:
-          'https://images.unsplash.com/photo-1588979355313-6711a095465f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=621&q=80',
-      name: 'Restaurant 04',
-      info: 'Address 04',
+          'https://upload.wikimedia.org/wikipedia/commons/e/ef/Restaurant_N%C3%A4sinneula.jpg',
+      name: 'Spoon Restaurant',
+      info: '2991 Maple Lane, Huntsville',
     ),
     Item(
       url:
-          'https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1153&q=80',
-      name: 'Restaurant 05',
-      info: 'Address 05',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXX3WgORFt_SqCQn2sX9xkEnqInUCLL-LJAw&usqp=CAU',
+      name: 'Le Restaurant',
+      info: '4206 Ray Court, Fayetteville',
     ),
   ];
 }

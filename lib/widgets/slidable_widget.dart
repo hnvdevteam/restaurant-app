@@ -19,20 +19,20 @@ class SlidableWidget<T> extends StatelessWidget {
         child: child,
 
         /// left side
-        actions: <Widget>[
-          IconSlideAction(
-            caption: 'Archive',
-            color: Colors.blue,
-            icon: Icons.archive,
-            // onTap: () => onDismissed(SlidableAction.archive),
-          ),
-          IconSlideAction(
-            caption: 'Share',
-            color: Colors.indigo,
-            icon: Icons.share,
-            // onTap: () => onDismissed(SlidableAction.share),
-          ),
-        ],
+        // actions: <Widget>[
+        //   IconSlideAction(
+        //     caption: 'Archive',
+        //     color: Colors.blue,
+        //     icon: Icons.archive,
+        //     // onTap: () => onDismissed(SlidableAction.archive),
+        //   ),
+        //   IconSlideAction(
+        //     caption: 'Share',
+        //     color: Colors.indigo,
+        //     icon: Icons.share,
+        //     // onTap: () => onDismissed(SlidableAction.share),
+        //   ),
+        // ],
 
         /// right side
         secondaryActions: <Widget>[
