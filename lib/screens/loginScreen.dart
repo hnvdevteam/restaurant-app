@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/screens/forgetPwScreen.dart';
-import 'package:monkey_app_demo/screens/homeScreen.dart';
+import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
 
 import '../const/colors.dart';
 import '../screens/forgetPwScreen.dart';

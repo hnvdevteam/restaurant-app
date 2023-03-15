@@ -18,35 +18,19 @@ class SlidableWidget<T> extends StatelessWidget {
         actionPane: SlidableDrawerActionPane(),
         child: child,
 
-        /// left side
-        // actions: <Widget>[
-        //   IconSlideAction(
-        //     caption: 'Archive',
-        //     color: Colors.blue,
-        //     icon: Icons.archive,
-        //     // onTap: () => onDismissed(SlidableAction.archive),
-        //   ),
-        //   IconSlideAction(
-        //     caption: 'Share',
-        //     color: Colors.indigo,
-        //     icon: Icons.share,
-        //     // onTap: () => onDismissed(SlidableAction.share),
-        //   ),
-        // ],
-
         /// right side
         secondaryActions: <Widget>[
           IconSlideAction(
             caption: 'More',
             color: Colors.black45,
             icon: Icons.more_horiz,
-            // onTap: () => onDismissed(SlidableAction.more),
+            onTap: () {},
           ),
           IconSlideAction(
             caption: 'Delete',
             color: Colors.red,
             icon: Icons.delete,
-            // onTap: () => onDismissed(SlidableAction.delete),
+            onTap: () {},
           ),
         ],
       );

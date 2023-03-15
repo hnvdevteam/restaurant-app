@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../const/colors.dart';
-import '../utils/helper.dart';
-import '../widgets/customNavBar.dart';
-import '../screens/individualItem.dart';
-import '../widgets/searchBar.dart';
+import '../../const/colors.dart';
+import '../../utils/helper.dart';
+import '../../widgets/customNavBar.dart';
+import '../individualItem.dart';
+import '../../widgets/searchBar.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = "/homeScreen";

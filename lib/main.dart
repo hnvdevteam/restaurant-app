@@ -9,7 +9,7 @@ import './screens/forgetPwScreen.dart';
 import './screens/sentOTPScreen.dart';
 import './screens/newPwScreen.dart';
 import './screens/introScreen.dart';
-import './screens/homeScreen.dart';
+import 'screens/homeScreen/homeScreen.dart';
 import 'screens/menuScreen/menuScreen.dart';
 import './screens/moreScreen.dart';
 import './screens/offerScreen.dart';

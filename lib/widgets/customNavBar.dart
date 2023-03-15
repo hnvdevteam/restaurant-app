@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../const/colors.dart';
-import '../screens/homeScreen.dart';
+import '../screens/homeScreen/homeScreen.dart';
 import '../screens/menuScreen/menuScreen.dart';
 import '../screens/moreScreen.dart';
 import '../screens/offerScreen.dart';
@@ -26,16 +26,18 @@ class CustomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            height: 80,
-            width: Helper.getScreenWidth(context),
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            color: Colors.white,
-            child: Flexible(
+    return Container(
+      decoration:
+          BoxDecoration(border: Border.all(color: Colors.grey, width: 1.0)),
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 80,
+              width: Helper.getScreenWidth(context),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              color: Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -51,10 +53,12 @@ class CustomNavBar extends StatelessWidget {
                       children: [
                         menu
                             ? Image.asset(
-                                Helper.getAssetName("", ""),
+                                Helper.getAssetName(
+                                    "menu_icons8.png", "virtual"),
                               )
                             : Image.asset(
-                                Helper.getAssetName("menu.png", "icons8"),
+                                Helper.getAssetName(
+                                    "menu_icons8.png", "virtual"),
                               ),
                         menu
                             ? Text("Menu",
@@ -75,10 +79,12 @@ class CustomNavBar extends StatelessWidget {
                       children: [
                         offer
                             ? Image.asset(
-                                Helper.getAssetName("", ""),
+                                Helper.getAssetName(
+                                    "order_icons8.png", "virtual"),
                               )
                             : Image.asset(
-                                Helper.getAssetName("order.png", "icons8"),
+                                Helper.getAssetName(
+                                    "order_icons8.png", "virtual"),
                               ),
                         offer
                             ? Text("Order",
@@ -99,10 +105,12 @@ class CustomNavBar extends StatelessWidget {
                       children: [
                         home
                             ? Image.asset(
-                                Helper.getAssetName("", ""),
+                                Helper.getAssetName(
+                                    "home_icons8.png", "virtual"),
                               )
                             : Image.asset(
-                                Helper.getAssetName("home.png", "icons8"),
+                                Helper.getAssetName(
+                                    "home_icons8.png", "virtual"),
                               ),
                         home
                             ? Text("Home",
@@ -123,10 +131,12 @@ class CustomNavBar extends StatelessWidget {
                       children: [
                         profile
                             ? Image.asset(
-                                Helper.getAssetName("", ""),
+                                Helper.getAssetName(
+                                    "profile_icons8.png", "virtual"),
                               )
                             : Image.asset(
-                                Helper.getAssetName("profile.png", "icons8"),
+                                Helper.getAssetName(
+                                    "profile_icons8.png", "virtual"),
                               ),
                         profile
                             ? Text("Profile",
@@ -147,15 +157,17 @@ class CustomNavBar extends StatelessWidget {
                       children: [
                         more
                             ? Image.asset(
-                                Helper.getAssetName("", ""),
+                                Helper.getAssetName(
+                                    "more_icons8.png", "virtual"),
                               )
                             : Image.asset(
-                                Helper.getAssetName("setting.png", "icons8"),
+                                Helper.getAssetName(
+                                    "more_icons8.png", "virtual"),
                               ),
                         more
-                            ? Text("Setting",
+                            ? Text("More",
                                 style: TextStyle(color: AppColor.orange))
-                            : Text("Setting"),
+                            : Text("More"),
                       ],
                     ),
                   ),
@@ -163,8 +175,8 @@ class CustomNavBar extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

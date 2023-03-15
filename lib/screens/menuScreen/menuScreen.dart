@@ -8,8 +8,14 @@ import '../../widgets/slidable_widget.dart';
 import 'data.dart';
 import 'model/item.dart';
 
-class MenuScreen extends StatelessWidget {
+class MenuScreen extends StatefulWidget {
   static const routeName = "/menuScreen";
+
+  @override
+  State<MenuScreen> createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   List<Item> items = List.of(Data.chats);
 
   @override
@@ -38,44 +44,34 @@ class MenuScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
                 SearchBar(title: "Search Food"),
                 SizedBox(
                   height: 10,
                 ),
                 Expanded(
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: double.infinity,
-                        width: 100,
-                        decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(30),
-                                bottomRight: Radius.circular(30),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: ListView.separated(
+                        itemBuilder: (context, index) {
+                          final item = items[index];
+                          return SlidableWidget(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColor.placeholder,
+                                    offset: Offset(0, 5),
+                                    blurRadius: 10,
+                                  )
+                                ],
                               ),
+                              child: buildListTile(item),
                             ),
-                            color: AppColor.orange),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 10,
-                          left: 10,
-                        ),
-                        child: ListView.separated(
-                            itemBuilder: (context, index) {
-                              final item = items[index];
-                              return SlidableWidget(
-                                child: buildListTile(item),
-                              );
-                            },
-                            separatorBuilder: (context, index) => Divider(),
-                            itemCount: items.length),
-                      ),
-                    ],
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            Container(height: 15),
+                        itemCount: items.length),
                   ),
                 ),
               ],
@@ -95,13 +91,10 @@ class MenuScreen extends StatelessWidget {
 
   Widget buildListTile(Item items) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-          ),
-          color: Color.fromARGB(200, 235, 235, 235),
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
         ),
-        child: InkWell(
+        child: GestureDetector(
           onTap: () {},
           child: Container(
             padding: EdgeInsets.symmetric(
