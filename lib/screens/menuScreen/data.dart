@@ -1,4 +1,4 @@
-import 'model/item.dart';
+import '../../model/item.dart';
 
 class Data {
   static const chats = <Item>[

@@ -6,7 +6,7 @@ import 'package:monkey_app_demo/widgets/searchBar.dart';
 
 import '../../widgets/slidable_widget.dart';
 import 'data.dart';
-import 'model/item.dart';
+import '../../model/item.dart';
 
 class MenuScreen extends StatefulWidget {
   static const routeName = "/menuScreen";

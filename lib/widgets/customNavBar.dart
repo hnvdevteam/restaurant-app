@@ -28,7 +28,7 @@ class CustomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration:
-          BoxDecoration(border: Border.all(color: Colors.grey, width: 1.0)),
+          BoxDecoration(border: Border.all(color: Colors.grey, width: 0.5)),
       child: Stack(
         children: [
           Align(
@@ -36,7 +36,7 @@ class CustomNavBar extends StatelessWidget {
             child: Container(
               height: 80,
               width: Helper.getScreenWidth(context),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               color: Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
