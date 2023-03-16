@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MenuScreen(),
+      home: HomeScreen(),
       routes: {
         LandingScreen.routeName: (context) => LandingScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),

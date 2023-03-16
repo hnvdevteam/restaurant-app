@@ -4,11 +4,19 @@ import 'package:monkey_app_demo/model/item.dart';
 import '../../const/colors.dart';
 import '../../utils/helper.dart';
 import '../../widgets/customNavBar.dart';
-import '../individualItem.dart';
 import '../../widgets/searchBar.dart';
+import 'data.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const routeName = "/homeScreen";
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<table_Item> items = List.of(Data.table);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,49 +77,28 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
                 SearchBar(
                   title: "Search Food",
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          width: 80,
-                          height: 110,
-                          color: Color.fromARGB(200, 225, 225, 225),
-                          // child: Image.asset(
-                          //   Helper.getAssetName("hamburger2.jpg", "real"),
-                          //   fit: BoxFit.cover,
-                          // ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: Container(
-                          width: 80,
-                          height: 110,
-                          color: Color.fromARGB(200, 225, 225, 225),
-                          // child: Image.asset(
-                          //   Helper.getAssetName("rice2.jpg", "real"),
-                          //   fit: BoxFit.cover,
-                          // ),
-                        ),
-                      ),
-                    ],
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 15,
+                      crossAxisSpacing: 0,
+                      childAspectRatio: 3,
+                    ),
+                    itemBuilder: (context, index) {
+                      final item = items[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: buildListTile(item),
+                      );
+                    },
+                    itemCount: items.length,
                   ),
                 ),
                 SizedBox(
@@ -123,17 +110,47 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: CustomNavBar(
-              home: true,
-            ),
-          ),
         ],
       ),
+      bottomNavigationBar: CustomNavBar(home: true),
     );
   }
+
+  Widget buildListTile(table_Item items) => Container(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.placeholder,
+              offset: Offset(0, 5),
+              blurRadius: 10,
+            )
+          ],
+        ),
+        child: GestureDetector(
+          onTap: () {},
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "ID: " + items.id,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Total: " + items.total,
+                ),
+                Text(
+                  "Status: " + items.reserved,
+                )
+              ],
+            ),
+          ),
+        ),
+      );
 }
 
 class RecentItemCard extends StatelessWidget {
@@ -226,24 +243,4 @@ class RecentItemCard extends StatelessWidget {
       ],
     );
   }
-
-  Widget buildListTile(Item items) => Container(
-        width: 80,
-        height: 110,
-        color: Color.fromARGB(200, 225, 225, 225),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.placeholderBg,
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            )
-          ],
-        ),
-        child: GestureDetector(
-          onTap: () {},
-          child: Container(),
-        ),
-      );
 }

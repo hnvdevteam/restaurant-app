@@ -16,7 +16,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  List<Item> items = List.of(Data.chats);
+  List<Item> items = List.of(Data.items);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,7 @@ class _MenuScreenState extends State<MenuScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 20,
-                  ),
+                  padding: const EdgeInsets.all(15.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -45,92 +42,80 @@ class _MenuScreenState extends State<MenuScreen> {
                   ),
                 ),
                 SearchBar(title: "Search Food"),
-                SizedBox(
-                  height: 10,
-                ),
                 Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.separated(
-                        itemBuilder: (context, index) {
-                          final item = items[index];
-                          return SlidableWidget(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: AppColor.placeholder,
-                                    offset: Offset(0, 5),
-                                    blurRadius: 10,
-                                  )
-                                ],
-                              ),
-                              child: buildListTile(item),
+                  child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return SlidableWidget(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 15,
+                              right: 15,
+                              top: 15,
                             ),
-                          );
-                        },
-                        separatorBuilder: (context, index) =>
-                            Container(height: 15),
-                        itemCount: items.length),
-                  ),
+                            child: buildListTile(item),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          Container(height: 0),
+                      itemCount: items.length),
                 ),
               ],
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: CustomNavBar(
-              menu: true,
-            ),
-          )
         ],
+      ),
+      bottomNavigationBar: CustomNavBar(
+        menu: true,
       ),
     );
   }
 
   Widget buildListTile(Item items) => Container(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.placeholder,
+              offset: Offset(0, 5),
+              blurRadius: 10,
+            )
+          ],
         ),
         child: GestureDetector(
           onTap: () {},
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
-            ),
-            child: Row(
-              children: [
-                Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      items.url,
-                      width: 75,
-                      height: 75,
-                      fit: BoxFit.cover,
+          child: Row(
+            children: [
+              Container(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    items.url,
+                    width: 75,
+                    height: 75,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      items.name,
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                  ),
+                    const SizedBox(height: 4),
+                    Text("Address: " + items.info),
+                  ],
                 ),
-                Container(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        items.name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 4),
-                      Text("Address: " + items.info),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );

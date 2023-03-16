@@ -103,14 +103,10 @@ class MoreScreen extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: CustomNavBar(
-              more: true,
-            ),
-          )
         ],
+      ),
+      bottomNavigationBar: CustomNavBar(
+        more: true,
       ),
     );
   }

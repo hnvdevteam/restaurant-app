@@ -154,14 +154,10 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: CustomNavBar(
-              profile: true,
-            ),
-          ),
         ],
+      ),
+      bottomNavigationBar: CustomNavBar(
+        profile: true,
       ),
     );
   }

@@ -11,3 +11,15 @@ class Item {
     @required this.info,
   });
 }
+
+class table_Item {
+  final String id;
+  final String total;
+  final String reserved;
+
+  const table_Item({
+    @required this.id,
+    @required this.total,
+    @required this.reserved,
+  });
+}

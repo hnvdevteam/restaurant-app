@@ -56,15 +56,9 @@ class AboutScreen extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: CustomNavBar(
-              menu: true,
-            ),
-          ),
         ],
       ),
+      bottomNavigationBar: CustomNavBar(),
     );
   }
 }
