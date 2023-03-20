@@ -6,7 +6,7 @@ import 'package:monkey_app_demo/screens/myOrderScreen.dart';
 import 'package:monkey_app_demo/screens/notificationScreen.dart';
 import 'package:monkey_app_demo/screens/paymentScreen.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customNavBar.dart';
+import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class MoreScreen extends StatelessWidget {
   static const routeName = "/moreScreen";
@@ -105,7 +105,7 @@ class MoreScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomNavBar(
+      bottomNavigationBar: CustomBottomNavBar(
         more: true,
       ),
     );

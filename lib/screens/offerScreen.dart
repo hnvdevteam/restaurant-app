@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customNavBar.dart';
+import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class OfferScreen extends StatelessWidget {
   static const routeName = "/offerScreen";
@@ -91,7 +91,7 @@ class OfferScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomNavBar(
+      bottomNavigationBar: CustomBottomNavBar(
         offer: true,
       ),
     );

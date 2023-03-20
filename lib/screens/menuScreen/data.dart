@@ -50,5 +50,11 @@ class Data {
       name: 'Moonhouse Restaurant',
       info: '3139 Stanley Avenue, New York',
     ),
+    Item(
+      url:
+          'https://media-cdn.tripadvisor.com/media/photo-s/1c/1c/2f/22/centonze-restaurant.jpg',
+      name: 'Restaurant Octave',
+      info: '3509 Washington Street, Texas',
+    ),
   ];
 }

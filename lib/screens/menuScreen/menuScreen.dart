@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
-import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customNavBar.dart';
-import 'package:monkey_app_demo/widgets/searchBar.dart';
+import 'package:monkey_app_demo/widgets/customAppBar.dart';
+import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
+import 'package:monkey_app_demo/widgets/slidable_widget.dart';
 
-import '../../widgets/slidable_widget.dart';
 import 'data.dart';
 import '../../model/item.dart';
 
@@ -24,49 +23,36 @@ class _MenuScreenState extends State<MenuScreen> {
       body: Stack(
         children: [
           SafeArea(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Menu",
-                        style: Helper.getTheme(context).headline5,
-                      ),
-                      Image.asset(
-                        Helper.getAssetName("cart.png", "virtual"),
-                      )
-                    ],
-                  ),
-                ),
-                SearchBar(title: "Search Food"),
-                Expanded(
-                  child: ListView.separated(
-                      itemBuilder: (context, index) {
-                        final item = items[index];
-                        return SlidableWidget(
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              left: 15,
-                              right: 15,
-                              top: 15,
-                            ),
-                            child: buildListTile(item),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (context, index) =>
-                          Container(height: 0),
-                      itemCount: items.length),
-                ),
-              ],
+            child: Container(
+              child: ListView.separated(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return Container(
+                        child: CustomAppBar(
+                          title: "List of restaurants!",
+                        ),
+                      );
+                    } else if (index == items.length + 1) {
+                      return Container(
+                        child: adddListTile(),
+                      );
+                    } else {
+                      final item = items[index - 1];
+                      return Container(
+                        child: SlidableWidget(
+                          child: buildListTile(item),
+                        ),
+                      );
+                    }
+                  },
+                  separatorBuilder: (context, index) => Container(height: 10),
+                  itemCount: items.length + 2),
             ),
           ),
         ],
       ),
-      bottomNavigationBar: CustomNavBar(
+      bottomNavigationBar: CustomBottomNavBar(
         menu: true,
       ),
     );
@@ -74,17 +60,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   Widget buildListTile(Item items) => Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.placeholder,
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            )
-          ],
-        ),
         child: GestureDetector(
           onTap: () {},
           child: Row(
@@ -92,12 +67,8 @@ class _MenuScreenState extends State<MenuScreen> {
               Container(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    items.url,
-                    width: 75,
-                    height: 75,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.network(items.url,
+                      width: 75, height: 75, fit: BoxFit.cover),
                 ),
               ),
               Container(
@@ -117,6 +88,25 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ],
           ),
+        ),
+      );
+
+  Widget adddListTile() => Container(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.placeholder,
+              offset: Offset(0, 5),
+              blurRadius: 10,
+            )
+          ],
+        ),
+        child: GestureDetector(
+          onTap: () {},
+          // child: Text(),
         ),
       );
 }

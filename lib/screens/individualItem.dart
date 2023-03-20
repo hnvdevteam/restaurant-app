@@ -2,7 +2,7 @@ import 'package:clip_shadow/clip_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customNavBar.dart';
+import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class IndividualItem extends StatelessWidget {
   static const routeName = "/individualScreen";
@@ -602,13 +602,9 @@ class IndividualItem extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: CustomNavBar(),
-          ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

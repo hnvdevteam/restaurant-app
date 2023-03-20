@@ -12,14 +12,14 @@ class Item {
   });
 }
 
-class table_Item {
+class Table_Item {
   final String id;
   final String total;
-  final String reserved;
+  final String reservation;
 
-  const table_Item({
+  const Table_Item({
     @required this.id,
     @required this.total,
-    @required this.reserved,
+    @required this.reservation,
   });
 }

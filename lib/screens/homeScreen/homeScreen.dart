@@ -3,7 +3,7 @@ import 'package:monkey_app_demo/model/item.dart';
 
 import '../../const/colors.dart';
 import '../../utils/helper.dart';
-import '../../widgets/customNavBar.dart';
+import '../../widgets/customBottomNavBar.dart';
 import '../../widgets/searchBar.dart';
 import 'data.dart';
 
@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<table_Item> items = List.of(Data.table);
+  List<Table_Item> items = List.of(Data.table);
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 20,
-                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
+                  padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -40,22 +35,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Good morning Akila!",
                         style: Helper.getTheme(context).headline5,
                       ),
-                      Image.asset(Helper.getAssetName("cart.png", "virtual"))
+                      Image.asset(
+                        Helper.getAssetName("cart.png", "virtual"),
+                      )
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
+                  padding: const EdgeInsets.only(top: 5, left: 15, right: 15),
                   child: Text("Deilivering to"),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
+                    horizontal: 15,
                   ),
                   child: DropdownButtonHideUnderline(
                     child: SizedBox(
@@ -85,38 +77,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: GridView.builder(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 15,
-                      crossAxisSpacing: 0,
+                      crossAxisSpacing: 15,
                       childAspectRatio: 3,
                     ),
                     itemBuilder: (context, index) {
                       final item = items[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: buildListTile(item),
-                      );
+                      return buildListTile(item);
                     },
                     itemCount: items.length,
                   ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                SizedBox(
-                  height: 20,
                 ),
               ],
             ),
           ),
         ],
       ),
-      bottomNavigationBar: CustomNavBar(home: true),
+      bottomNavigationBar: CustomBottomNavBar(
+        home: true,
+      ),
     );
   }
 
-  Widget buildListTile(table_Item items) => Container(
+  Widget buildListTile(Table_Item items) => Container(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -144,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "Total: " + items.total,
                 ),
                 Text(
-                  "Status: " + items.reserved,
+                  "Status: " + items.reservation,
                 )
               ],
             ),
