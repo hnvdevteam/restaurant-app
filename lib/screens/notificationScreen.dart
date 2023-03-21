@@ -79,9 +79,7 @@ class NotificationScreen extends StatelessWidget {
           )),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(
-        menu: true,
-      ),
+      bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
-import 'package:monkey_app_demo/widgets/customTextInput.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = "/profileScreen";
@@ -43,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                               width: 80,
                               child: Image.asset(
                                 Helper.getAssetName(
-                                  "user.jpg",
+                                  "user1.jpg",
                                   "real",
                                 ),
                                 fit: BoxFit.cover,

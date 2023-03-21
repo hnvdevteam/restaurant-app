@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/const/colors.dart';
+import 'package:monkey_app_demo/screens/aboutScreen.dart';
 import 'package:monkey_app_demo/screens/changeAddressScreen.dart';
-
-import './screens/spashScreen.dart';
-import './screens/landingScreen.dart';
-import './screens/loginScreen.dart';
-import './screens/signUpScreen.dart';
-import './screens/forgetPwScreen.dart';
-import './screens/sentOTPScreen.dart';
-import './screens/newPwScreen.dart';
-import './screens/introScreen.dart';
-import 'screens/homeScreen/homeScreen.dart';
-import 'screens/menuScreen/menuScreen.dart';
-import './screens/moreScreen.dart';
-import './screens/offerScreen.dart';
-import './screens/profileScreen.dart';
-import './screens/dessertScreen.dart';
-import './screens/individualItem.dart';
-import './screens/paymentScreen.dart';
-import './screens/notificationScreen.dart';
-import './screens/aboutScreen.dart';
-import './screens/inboxScreen.dart';
-import './screens/myOrderScreen.dart';
-import './screens/checkoutScreen.dart';
-import './const/colors.dart';
+import 'package:monkey_app_demo/screens/checkoutScreen.dart';
+import 'package:monkey_app_demo/screens/dessertScreen.dart';
+import 'package:monkey_app_demo/screens/forgetPwScreen.dart';
+import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
+import 'package:monkey_app_demo/screens/inboxScreen.dart';
+import 'package:monkey_app_demo/screens/individualItem.dart';
+import 'package:monkey_app_demo/screens/introScreen.dart';
+import 'package:monkey_app_demo/screens/landingScreen.dart';
+import 'package:monkey_app_demo/screens/loginScreen.dart';
+import 'package:monkey_app_demo/screens/menuScreen/menuScreen.dart';
+import 'package:monkey_app_demo/screens/moreScreen.dart';
+import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
+import 'package:monkey_app_demo/screens/newPwScreen.dart';
+import 'package:monkey_app_demo/screens/notificationScreen.dart';
+import 'package:monkey_app_demo/screens/offerScreen.dart';
+import 'package:monkey_app_demo/screens/paymentScreen.dart';
+import 'package:monkey_app_demo/screens/profileScreen.dart';
+import 'package:monkey_app_demo/screens/sentOTPScreen.dart';
+import 'package:monkey_app_demo/screens/signUpScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -80,7 +78,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeScreen(),
+      home: MyOrderScreen(),
       routes: {
         LandingScreen.routeName: (context) => LandingScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),

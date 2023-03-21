@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/screens/aboutScreen.dart';
 import 'package:monkey_app_demo/screens/inboxScreen.dart';
-import 'package:monkey_app_demo/screens/myOrderScreen.dart';
+import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
 import 'package:monkey_app_demo/screens/notificationScreen.dart';
 import 'package:monkey_app_demo/screens/paymentScreen.dart';
 import 'package:monkey_app_demo/utils/helper.dart';

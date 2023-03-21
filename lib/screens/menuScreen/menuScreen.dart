@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
+import 'package:monkey_app_demo/model/item.dart';
 import 'package:monkey_app_demo/widgets/customAppBar.dart';
 import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 import 'package:monkey_app_demo/widgets/slidable_widget.dart';
 
 import 'data.dart';
-import '../../model/item.dart';
 
 class MenuScreen extends StatefulWidget {
   static const routeName = "/menuScreen";
@@ -20,40 +20,30 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Container(
-              child: ListView.separated(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Container(
-                        child: CustomAppBar(
-                          title: "List of restaurants!",
-                        ),
-                      );
-                    } else if (index == items.length + 1) {
-                      return Container(
-                        child: adddListTile(),
-                      );
-                    } else {
-                      final item = items[index - 1];
-                      return Container(
-                        child: SlidableWidget(
-                          child: buildListTile(item),
-                        ),
-                      );
-                    }
-                  },
-                  separatorBuilder: (context, index) => Container(height: 10),
-                  itemCount: items.length + 2),
-            ),
-          ),
-        ],
+      appBar: CustomAppBar(
+        title: 'Restaurants',
+      ),
+      body: SafeArea(
+        child: ListView.separated(
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          itemBuilder: (context, index) {
+            if (index == items.length) {
+              return adddListTile();
+            } else {
+              final item = items[index];
+              return Container(
+                child: SlidableWidget(
+                  child: buildListTile(item),
+                ),
+              );
+            }
+          },
+          separatorBuilder: (context, index) => Container(height: 10),
+          itemCount: items.length + 1,
+        ),
       ),
       bottomNavigationBar: CustomBottomNavBar(
-        menu: true,
+        restaurant: true,
       ),
     );
   }
@@ -92,6 +82,7 @@ class _MenuScreenState extends State<MenuScreen> {
       );
 
   Widget adddListTile() => Container(
+        height: 85,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -106,7 +97,23 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
         child: GestureDetector(
           onTap: () {},
-          // child: Text(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                foregroundColor: Colors.white,
+                backgroundColor: AppColor.placeholder,
+                child: Icon(
+                  Icons.add,
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text('Add')
+            ],
+          ),
         ),
       );
 }

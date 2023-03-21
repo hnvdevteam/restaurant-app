@@ -92,7 +92,7 @@ class OfferScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: CustomBottomNavBar(
-        offer: true,
+        foodlist: true,
       ),
     );
   }

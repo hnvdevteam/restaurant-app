@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-
-import '../const/colors.dart';
-import '../screens/homeScreen/homeScreen.dart';
-import '../screens/menuScreen/menuScreen.dart';
-import '../screens/moreScreen.dart';
-import '../screens/offerScreen.dart';
-import '../screens/profileScreen.dart';
+import 'package:monkey_app_demo/const/colors.dart';
+import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
+import 'package:monkey_app_demo/screens/menuScreen/menuScreen.dart';
+import 'package:monkey_app_demo/screens/moreScreen.dart';
+import 'package:monkey_app_demo/screens/offerScreen.dart';
+import 'package:monkey_app_demo/screens/profileScreen.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final bool home;
-  final bool menu;
-  final bool offer;
+  final bool foodlist;
+  final bool restaurant;
   final bool profile;
   final bool more;
 
   const CustomBottomNavBar(
       {Key key,
       this.home = false,
-      this.menu = false,
-      this.offer = false,
+      this.foodlist = false,
+      this.restaurant = false,
       this.profile = false,
       this.more = false})
       : super(key: key);
@@ -46,6 +45,12 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           color: AppColor.placeholder,
           width: 0.5,
         ),
+        boxShadow: [
+          BoxShadow(
+              color: AppColor.placeholder,
+              offset: Offset(0, 5),
+              blurRadius: 10),
+        ],
       ),
       child: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -54,23 +59,26 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
         onTap: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
+          setState(
+            () {
+              _selectedIndex = index;
+            },
+          );
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-                builder: (BuildContext context) =>
-                    _widgetOptions.elementAt(_selectedIndex)),
+              builder: (BuildContext context) =>
+                  _widgetOptions.elementAt(_selectedIndex),
+            ),
           );
         },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.menu),
-            label: 'Menu',
+            label: 'Restaurants',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Order',
+            label: 'Foodlist',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
