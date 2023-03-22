@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
+import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
 import 'package:monkey_app_demo/widgets/customAppBar.dart';
 import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
+import 'package:intl/intl.dart';
 
 import 'data.dart';
 
@@ -16,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Table_Item> items = List.of(Data.table);
 
+  String formattedDate = DateFormat('h:mm:ss a').format(DateTime.now());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: GridView.builder(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+            crossAxisCount: 3,
             mainAxisSpacing: 15,
             crossAxisSpacing: 15,
-            childAspectRatio: 3,
+            childAspectRatio: 1.2,
           ),
           itemBuilder: (context, index) {
             if (index == items.length) {
@@ -48,36 +52,43 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildListTile(Table_Item items) => Container(
-        height: 85,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.placeholder,
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            )
-          ],
-        ),
-        child: GestureDetector(
-          onTap: () {},
+  Widget buildListTile(Table_Item items) => GestureDetector(
+        onTap: () {
+          Navigator.of(context).pushNamed(MyOrderScreen.routeName);
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: AppColor.placeholder,
+                offset: Offset(0, 5),
+                blurRadius: 10,
+              )
+            ],
+          ),
           child: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "ID: " + items.id,
+                  items.id,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  "Total: " + items.total,
+                SizedBox(
+                  height: 5,
                 ),
                 Text(
-                  "Status: " + items.reservation,
+                  items.total + ' ₫',
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  formattedDate,
                 )
               ],
             ),
@@ -86,7 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
   Widget adddListTile() => Container(
-        height: 85,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

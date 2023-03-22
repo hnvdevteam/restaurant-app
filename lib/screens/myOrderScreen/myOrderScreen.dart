@@ -267,17 +267,6 @@ class MyOrderScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 20),
-                      SizedBox(
-                        height: 50,
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(CheckoutScreen.routeName);
-                          },
-                          child: Text("Checkout"),
-                        ),
-                      ),
                     ],
                   ),
                 )
@@ -286,7 +275,17 @@ class MyOrderScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      bottomNavigationBar: Container(
+        height: 50,
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(CheckoutScreen.routeName);
+          },
+          child: Text("Checkout"),
+        ),
+      ),
     );
   }
 }

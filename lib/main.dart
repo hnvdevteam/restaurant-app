@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MyOrderScreen(),
+      home: HomeScreen(),
       routes: {
         LandingScreen.routeName: (context) => LandingScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
