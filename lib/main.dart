@@ -21,6 +21,7 @@ import 'package:monkey_app_demo/screens/paymentScreen.dart';
 import 'package:monkey_app_demo/screens/profileScreen.dart';
 import 'package:monkey_app_demo/screens/sentOTPScreen.dart';
 import 'package:monkey_app_demo/screens/signUpScreen.dart';
+import 'package:monkey_app_demo/widgets/layout.dart';
 
 void main() {
   runApp(MyApp());
@@ -78,8 +79,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeScreen(),
+      home: LayoutScreen(0),
       routes: {
+        LayoutScreen.routeName: (context) => LayoutScreen(0),
         LandingScreen.routeName: (context) => LandingScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         SignUpScreen.routeName: (context) => SignUpScreen(),
