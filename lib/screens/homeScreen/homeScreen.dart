@@ -52,49 +52,79 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildListTile(Table_Item items) => GestureDetector(
-        onTap: () {
-          Navigator.of(context).pushNamed(MyOrderScreen.routeName);
-        },
+  Widget buildListTile(Table_Item items) {
+    Color boxColor = items.reservation == "" ? Colors.green : Colors.red;
+
+// Color boxColor;
+
+// if (items.reserved == "") {
+//   boxColor = Colors.green;
+// } else if (items.reserved == "Using") {
+//   boxColor = Colors.red;
+// } else if (items.reserved == "Reserved") {
+//   boxColor = Colors.yellow;
+// }
+
+// return Container(
+//   color: boxColor,
+//   // Các thuộc tính khác của Container()
+// );
+
+// Color boxColor = items.reserved == "" ? Colors.green : items.reserved == "Using" ? Colors.red : Colors.yellow;
+
+// return Container(
+//   color: boxColor,
+//   // Các thuộc tính khác của Container()
+// );
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(MyOrderScreen.routeName);
+      },
+      child: Container(
+        padding: EdgeInsets.only(top: 2, left: 2, right: 2, bottom: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: boxColor,
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.placeholder,
+              offset: Offset(0, 5),
+              blurRadius: 10,
+            )
+          ],
+        ),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(13),
             color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: AppColor.placeholder,
-                offset: Offset(0, 5),
-                blurRadius: 10,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                items.id,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                items.total + ' ₫',
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                formattedDate,
               )
             ],
           ),
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  items.id,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  items.total + ' ₫',
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  formattedDate,
-                )
-              ],
-            ),
-          ),
         ),
-      );
+      ),
+    );
+  }
 
   Widget adddListTile() => Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
