@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
 import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
-import 'package:monkey_app_demo/widgets/customAppBar.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
-import 'package:intl/intl.dart';
 
 import 'data.dart';
 
@@ -22,11 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Tables',
-      ),
-      body: SafeArea(
+    return SafeArea(
         child: GridView.builder(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -45,11 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           itemCount: items.length + 1,
         ),
-      ),
-      bottomNavigationBar: CustomBottomNavBar(
-        home: true,
-      ),
-    );
+      );
   }
 
   Widget buildListTile(Table_Item items) => GestureDetector(

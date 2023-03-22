@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class NotificationScreen extends StatelessWidget {
   static const routeName = "/notiScreen";
@@ -79,7 +78,7 @@ class NotificationScreen extends StatelessWidget {
           )),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      // bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

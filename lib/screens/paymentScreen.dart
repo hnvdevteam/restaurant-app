@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 import 'package:monkey_app_demo/widgets/customTextInput.dart';
 
 class PaymentScreen extends StatelessWidget {
@@ -337,7 +336,7 @@ class PaymentScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      // bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

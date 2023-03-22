@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = "/profileScreen";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return Stack(
         children: [
           SafeArea(
             child: Container(
@@ -154,11 +152,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: CustomBottomNavBar(
-        profile: true,
-      ),
-    );
+      );
   }
 }
 
