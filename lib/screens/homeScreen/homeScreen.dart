@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
 import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
+import 'package:intl/intl.dart';
 
 import 'data.dart';
 
@@ -21,25 +21,25 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: GridView.builder(
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 15,
-            crossAxisSpacing: 15,
-            childAspectRatio: 1.2,
-          ),
-          itemBuilder: (context, index) {
-            if (index == items.length) {
-              return adddListTile();
-            } else {
-              final item = items[index];
-              return buildListTile(item);
-            }
-          },
-          itemCount: items.length + 1,
+      child: GridView.builder(
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisSpacing: 15,
+          crossAxisSpacing: 15,
+          childAspectRatio: 1.2,
         ),
-      );
+        itemBuilder: (context, index) {
+          if (index == items.length) {
+            return adddListTile();
+          } else {
+            final item = items[index];
+            return buildListTile(item);
+          }
+        },
+        itemCount: items.length + 1,
+      ),
+    );
   }
 
   Widget buildListTile(Table_Item items) {
