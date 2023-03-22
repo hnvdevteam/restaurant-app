@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class AboutScreen extends StatelessWidget {
   static const routeName = "/aboutScreen";
@@ -58,7 +57,7 @@ class AboutScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      // bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

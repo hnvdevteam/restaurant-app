@@ -3,7 +3,6 @@ import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/screens/changeAddressScreen.dart';
 import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 import 'package:monkey_app_demo/widgets/customTextInput.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -561,7 +560,7 @@ class CheckoutScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      // bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

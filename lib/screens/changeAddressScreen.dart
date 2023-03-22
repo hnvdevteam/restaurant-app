@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 import 'package:monkey_app_demo/widgets/searchBar.dart';
 
 class ChangeAddressScreen extends StatelessWidget {
@@ -165,7 +164,7 @@ class ChangeAddressScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
+      // bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

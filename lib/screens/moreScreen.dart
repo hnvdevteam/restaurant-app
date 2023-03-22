@@ -6,14 +6,12 @@ import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
 import 'package:monkey_app_demo/screens/notificationScreen.dart';
 import 'package:monkey_app_demo/screens/paymentScreen.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class MoreScreen extends StatelessWidget {
   static const routeName = "/moreScreen";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return Stack(
         children: [
           SafeArea(
             child: Container(
@@ -104,11 +102,7 @@ class MoreScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: CustomBottomNavBar(
-        more: true,
-      ),
-    );
+      );
   }
 }
 
