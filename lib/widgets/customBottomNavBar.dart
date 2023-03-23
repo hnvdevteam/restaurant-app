@@ -3,12 +3,10 @@ import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/const/layoutBar.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  final Function(int) onItemTapped;
-  int _selectedIndex = 0;
+  const CustomBottomNavBar(this.selectedIndex, {Key key, this.onItemTapped}) : super(key: key);
 
-  CustomBottomNavBar(int selectedIndex, {this.onItemTapped}) {
-    _selectedIndex = selectedIndex;
-  }
+  final Function(int) onItemTapped;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class CustomBottomNavBar extends StatelessWidget {
           backgroundColor: Colors.white,
           selectedItemColor: AppColor.orange,
           unselectedItemColor: Colors.grey,
-          currentIndex: _selectedIndex,
+          currentIndex: selectedIndex,
           onTap: (int index) => onItemTapped(index),
           items: bottomItemManagement),
     );

@@ -4,23 +4,26 @@ import 'package:monkey_app_demo/widgets/customAppBar.dart';
 import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class LayoutScreen extends StatefulWidget {
-  static const routeName = "/LayoutScreen";
-  int currentIndex = 0;
-  LayoutScreen(this.currentIndex) {
-    currentIndex = this.currentIndex;
-  }
+  const LayoutScreen(this.currentIndex, {Key key}) : super(key: key);
 
+  static const routeName = "/LayoutScreen";
+  final int currentIndex;
   @override
   _LayoutScreenState createState() => _LayoutScreenState();
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
+  int _currentIndex;
 
-
+  @override
+  void initState() {
+    _currentIndex = widget.currentIndex;
+    super.initState();
+  }
 
   void _handleItemTap(int index) {
     setState(() {
-      widget.currentIndex = index;
+      _currentIndex = index;
     });
   }
 
@@ -28,10 +31,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(
-          title: appBarTitleManagement[widget.currentIndex],
+          title: appBarTitleManagement[_currentIndex],
         ),
-        body: bottomWidgetManagement[widget.currentIndex],
-        bottomNavigationBar: CustomBottomNavBar(widget.currentIndex,
-            onItemTapped: _handleItemTap));
+        body: bottomWidgetManagement[_currentIndex],
+        bottomNavigationBar: CustomBottomNavBar(_currentIndex, onItemTapped: _handleItemTap));
   }
 }
