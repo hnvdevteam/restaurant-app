@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "737427767164",
+    "project_id": "retaurant-app-ce20e",
+    "storage_bucket": "retaurant-app-ce20e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737427767164:android:b6aa25b026d6ff215b6ef9",
+        "android_client_info": {
+          "package_name": "com.example.monkey_app_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737427767164-m1c52vt7nu763csv8iuq29k99h9jisv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYIHMbAXyIPmdYc3QhSrdaeYfSHpyWmlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737427767164-m1c52vt7nu763csv8iuq29k99h9jisv5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
