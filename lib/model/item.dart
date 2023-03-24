@@ -23,3 +23,15 @@ class Table_Item {
     @required this.reservation,
   });
 }
+
+class Order_Item {
+  final String name;
+  final String quantity;
+  final String price;
+
+  const Order_Item({
+    @required this.name,
+    @required this.quantity,
+    @required this.price,
+  });
+}

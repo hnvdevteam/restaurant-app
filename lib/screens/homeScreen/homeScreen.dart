@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: GridView.builder(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 15,
@@ -43,29 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildListTile(Table_Item items) {
-    Color boxColor = items.reservation == "" ? Colors.green : Colors.red;
+    Color boxColor;
 
-// Color boxColor;
-
-// if (items.reserved == "") {
-//   boxColor = Colors.green;
-// } else if (items.reserved == "Using") {
-//   boxColor = Colors.red;
-// } else if (items.reserved == "Reserved") {
-//   boxColor = Colors.yellow;
-// }
-
-// return Container(
-//   color: boxColor,
-//   // Các thuộc tính khác của Container()
-// );
-
-// Color boxColor = items.reserved == "" ? Colors.green : items.reserved == "Using" ? Colors.red : Colors.yellow;
-
-// return Container(
-//   color: boxColor,
-//   // Các thuộc tính khác của Container()
-// );
+    if (items.reservation == "") {
+      boxColor = Colors.green;
+    } else if (items.reservation == "Using") {
+      boxColor = Colors.red;
+    } else if (items.reservation == "Reserved") {
+      boxColor = Colors.yellow;
+    }
 
     return GestureDetector(
       onTap: () {
@@ -81,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: AppColor.placeholder,
               offset: Offset(0, 5),
               blurRadius: 10,
-            )
+            ),
           ],
         ),
         child: Container(

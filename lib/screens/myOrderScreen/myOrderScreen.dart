@@ -1,168 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
+import 'package:monkey_app_demo/model/item.dart';
 import 'package:monkey_app_demo/screens/checkoutScreen.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
-class MyOrderScreen extends StatelessWidget {
+import 'data.dart';
+
+class MyOrderScreen extends StatefulWidget {
   static const routeName = "/myOrderScreen";
+
+  @override
+  State<MyOrderScreen> createState() => _MyOrderScreenState();
+}
+
+class _MyOrderScreenState extends State<MyOrderScreen> {
+  List<Order_Item> items = List.of(Data.orders);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Column(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Column(
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: Icon(
-                        Icons.arrow_back_ios_rounded,
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "My Order",
-                        style: Helper.getTheme(context).headline5,
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: SizedBox(
-                    height: 80,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            height: 80,
-                            width: 80,
-                            child: Image.asset(
-                              Helper.getAssetName("hamburger.jpg", "real"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              "King Burgers",
-                              style: Helper.getTheme(context).headline3,
-                            ),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  Helper.getAssetName(
-                                    "star_filled.png",
-                                    "virtual",
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "4.9",
-                                  style: TextStyle(
-                                    color: AppColor.orange,
-                                  ),
-                                ),
-                                Text(" (124 ratings)"),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text("Burger"),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    bottom: 5,
-                                  ),
-                                  child: Text(
-                                    ".",
-                                    style: TextStyle(
-                                      color: AppColor.orange,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Text("Western Food"),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  height: 15,
-                                  child: Image.asset(
-                                    Helper.getAssetName(
-                                      "loc.png",
-                                      "virtual",
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text("No 03, 4th Lane, Newyork")
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  width: double.infinity,
-                  color: AppColor.placeholderBg,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Column(
-                      children: [
-                        BurgerCard(
-                          price: "16",
-                          name: "Beef Burger",
-                        ),
-                        BurgerCard(
-                          price: "14",
-                          name: "Classic Burger",
-                        ),
-                        BurgerCard(
-                          price: "17",
-                          name: "Cheese Chicken Burger",
-                        ),
-                        BurgerCard(
-                          price: "15",
-                          name: "Chicken Legs Basket",
-                        ),
-                        BurgerCard(
-                          price: "6",
-                          name: "French Fries Large",
-                          isLast: true,
-                        ),
-                      ],
-                    ),
+                Expanded(
+                  child: ListView.separated(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return SizedBox(
+                          height: 40,
+                        );
+                      } else {
+                        final item = items[index - 1];
+                        return buildListTile(item);
+                      }
+                    },
+                    separatorBuilder: (context, index) => Container(height: 0),
+                    itemCount: items.length + 1,
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
                     children: [
                       Container(
@@ -183,21 +63,22 @@ class MyOrderScreen extends StatelessWidget {
                               ),
                             ),
                             TextButton(
-                                onPressed: () {},
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.add,
+                              onPressed: () {},
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.add,
+                                    color: AppColor.orange,
+                                  ),
+                                  Text(
+                                    "Add Notes",
+                                    style: TextStyle(
                                       color: AppColor.orange,
                                     ),
-                                    Text(
-                                      "Add Notes",
-                                      style: TextStyle(
-                                        color: AppColor.orange,
-                                      ),
-                                    )
-                                  ],
-                                ))
+                                  )
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -217,7 +98,7 @@ class MyOrderScreen extends StatelessWidget {
                             style: Helper.getTheme(context).headline3.copyWith(
                                   color: AppColor.orange,
                                 ),
-                          )
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -236,7 +117,7 @@ class MyOrderScreen extends StatelessWidget {
                             style: Helper.getTheme(context).headline3.copyWith(
                                   color: AppColor.orange,
                                 ),
-                          )
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -263,22 +144,80 @@ class MyOrderScreen extends StatelessWidget {
                                   color: AppColor.orange,
                                   fontSize: 22,
                                 ),
-                          )
+                          ),
                         ],
                       ),
                       SizedBox(height: 20),
                     ],
                   ),
-                )
+                ),
               ],
             ),
-          ),
-        ],
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ClipOval(
+                    child: Container(
+                      color: Color.fromARGB(200, 150, 150, 150),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_rounded,
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        height: 40,
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        alignment: Alignment.center,
+                        color: Color.fromARGB(100, 150, 150, 150),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Table",
+                              style: Helper.getTheme(context)
+                                  .headline6
+                                  .copyWith(color: Colors.black),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Image.asset(
+                              Helper.getAssetName("dropdown.png", "virtual"),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  ClipOval(
+                    child: Container(
+                      color: Color.fromARGB(200, 150, 150, 150),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.menu),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         height: 50,
         width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         child: ElevatedButton(
           onPressed: () {
             Navigator.of(context).pushNamed(CheckoutScreen.routeName);
@@ -290,54 +229,47 @@ class MyOrderScreen extends StatelessWidget {
   }
 }
 
-class BurgerCard extends StatelessWidget {
-  const BurgerCard({
-    Key key,
-    String name,
-    String price,
-    bool isLast = false,
-  })  : _name = name,
-        _price = price,
-        _isLast = isLast,
-        super(key: key);
-
-  final String _name;
-  final String _price;
-  final bool _isLast;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: _isLast
-              ? BorderSide.none
-              : BorderSide(
-                  color: AppColor.placeholder.withOpacity(0.25),
-                ),
+Widget buildListTile(Order_Item items) => Dismissible(
+      key: UniqueKey(),
+      onDismissed: (direction) {},
+      direction: DismissDirection.endToStart,
+      background: Container(
+        color: Colors.red,
+        alignment: Alignment.centerRight,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 20.0),
+          child: Icon(Icons.delete, color: Colors.white),
         ),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              "${_name} x1",
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 25),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: AppColor.placeholder.withOpacity(0.25),
+            ),
+          ),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                items.name + " x" + items.quantity,
+                style: TextStyle(
+                  color: AppColor.primary,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Text(
+              items.price,
               style: TextStyle(
                 color: AppColor.primary,
                 fontSize: 16,
+                fontWeight: FontWeight.w900,
               ),
             ),
-          ),
-          Text(
-            "\$$_price",
-            style: TextStyle(
-              color: AppColor.primary,
-              fontSize: 16,
-              fontWeight: FontWeight.w900,
-            ),
-          )
-        ],
+          ],
+        ),
       ),
     );
-  }
-}

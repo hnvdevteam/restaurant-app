@@ -14,12 +14,12 @@ class Data {
     ),
     Table_Item(
       id: '3',
-      total: '250000',
+      total: '0',
       reservation: '',
     ),
     Table_Item(
       id: '4',
-      total: '300000',
+      total: '0',
       reservation: 'Reserved',
     ),
     Table_Item(
@@ -50,11 +50,11 @@ class Data {
     Table_Item(
       id: '10',
       total: '250000',
-      reservation: '',
+      reservation: 'Using',
     ),
     Table_Item(
       id: '11',
-      total: '300000',
+      total: '0',
       reservation: 'Reserved',
     ),
     Table_Item(
@@ -64,7 +64,7 @@ class Data {
     ),
     Table_Item(
       id: '13',
-      total: '165000',
+      total: '0',
       reservation: 'Reserved',
     ),
     Table_Item(
@@ -74,7 +74,7 @@ class Data {
     ),
     Table_Item(
       id: '15',
-      total: '560000',
+      total: '235000',
       reservation: 'Using',
     ),
     Table_Item(
@@ -85,11 +85,11 @@ class Data {
     Table_Item(
       id: '17',
       total: '250000',
-      reservation: '',
+      reservation: 'Using',
     ),
     Table_Item(
       id: '18',
-      total: '300000',
+      total: '0',
       reservation: '',
     ),
     Table_Item(
@@ -99,8 +99,8 @@ class Data {
     ),
     Table_Item(
       id: '20',
-      total: '165000',
-      reservation: '',
+      total: '0',
+      reservation: 'Reserved',
     ),
     Table_Item(
       id: '14',

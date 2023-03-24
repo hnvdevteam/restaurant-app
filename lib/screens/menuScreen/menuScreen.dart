@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
+import 'package:monkey_app_demo/utils/helper.dart';
 import 'package:monkey_app_demo/widgets/slidable_widget.dart';
 
 import 'data.dart';
@@ -18,24 +19,24 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: ListView.separated(
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          itemBuilder: (context, index) {
-            if (index == items.length) {
-              return adddListTile();
-            } else {
-              final item = items[index];
-              return Container(
-                child: SlidableWidget(
-                  child: buildListTile(item),
-                ),
-              );
-            }
-          },
-          separatorBuilder: (context, index) => Container(height: 10),
-          itemCount: items.length + 1,
-        ),
-      );
+      child: ListView.separated(
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+        itemBuilder: (context, index) {
+          if (index == items.length) {
+            return adddListTile();
+          } else {
+            final item = items[index];
+            return Container(
+              child: SlidableWidget(
+                child: buildListTile(item),
+              ),
+            );
+          }
+        },
+        separatorBuilder: (context, index) => Container(height: 10),
+        itemCount: items.length + 1,
+      ),
+    );
   }
 
   Widget buildListTile(Item items) => Container(
@@ -61,8 +62,22 @@ class _MenuScreenState extends State<MenuScreen> {
                       items.name,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 4),
-                    Text("Address: " + items.info),
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 15,
+                          child: Image.asset(
+                            Helper.getAssetName(
+                              "loc.png",
+                              "virtual",
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Text("Address: " + items.info),
+                      ],
+                    ),
                   ],
                 ),
               ),
