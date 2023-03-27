@@ -7,8 +7,6 @@ import 'package:monkey_app_demo/widgets/slidable_widget.dart';
 import 'data.dart';
 
 class MenuScreen extends StatefulWidget {
-  static const routeName = "/menuScreen";
-
   @override
   State<MenuScreen> createState() => _MenuScreenState();
 }

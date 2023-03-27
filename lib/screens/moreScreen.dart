@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
-import 'package:monkey_app_demo/screens/aboutScreen.dart';
-import 'package:monkey_app_demo/screens/inboxScreen.dart';
-import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
-import 'package:monkey_app_demo/screens/notificationScreen.dart';
-import 'package:monkey_app_demo/screens/paymentScreen.dart';
+import 'package:monkey_app_demo/routes.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 
 class MoreScreen extends StatelessWidget {
-  static const routeName = "/moreScreen";
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -41,7 +36,7 @@ class MoreScreen extends StatelessWidget {
                     ),
                     name: "Payment Details",
                     handler: () {
-                      Navigator.of(context).pushNamed(PaymentScreen.routeName);
+                      Navigator.of(context).pushNamed(AppRoutes.payment);
                     },
                   ),
                   SizedBox(
@@ -53,7 +48,7 @@ class MoreScreen extends StatelessWidget {
                     ),
                     name: "My Orders",
                     handler: () {
-                      Navigator.of(context).pushNamed(MyOrderScreen.routeName);
+                      Navigator.of(context).pushNamed(AppRoutes.myOrder);
                     },
                   ),
                   SizedBox(
@@ -67,7 +62,7 @@ class MoreScreen extends StatelessWidget {
                     isNoti: true,
                     handler: () {
                       Navigator.of(context)
-                          .pushNamed(NotificationScreen.routeName);
+                          .pushNamed(AppRoutes.notification);
                     },
                   ),
                   SizedBox(
@@ -79,7 +74,7 @@ class MoreScreen extends StatelessWidget {
                     ),
                     name: "Inbox",
                     handler: () {
-                      Navigator.of(context).pushNamed(InboxScreen.routeName);
+                      Navigator.of(context).pushNamed(AppRoutes.inbox);
                     },
                   ),
                   SizedBox(
@@ -91,7 +86,7 @@ class MoreScreen extends StatelessWidget {
                     ),
                     name: "About Us",
                     handler: () {
-                      Navigator.of(context).pushNamed(AboutScreen.routeName);
+                      Navigator.of(context).pushNamed(AppRoutes.about);
                     },
                   ),
                   SizedBox(

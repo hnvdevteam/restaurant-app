@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:clip_shadow/clip_shadow.dart';
-import 'package:monkey_app_demo/screens/loginScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/routes.dart';
 
 import '../const/colors.dart';
 import '../utils/helper.dart';
 
 class LandingScreen extends StatelessWidget {
-  static const routeName = "/landingScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +70,7 @@ class LandingScreen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context)
-                            .pushReplacementNamed(LoginScreen.routeName);
+                            .pushReplacementNamed(AppRoutes.home);
                       },
                       child: Text("Login"),
                     ),

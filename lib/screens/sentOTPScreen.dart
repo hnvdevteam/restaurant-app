@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/routes.dart';
 
 import '../const/colors.dart';
 import '../utils/helper.dart';
-import './newPwScreen.dart';
 
 class SendOTPScreen extends StatelessWidget {
-  static const routeName = "/sendOTP";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +49,7 @@ class SendOTPScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(NewPwScreen.routeName);
+                      .pushReplacementNamed(AppRoutes.newPassword);
                 },
                 child: Text("Next"),
               ),

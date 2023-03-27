@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/routes.dart';
 
 import '../utils/helper.dart';
 import '../widgets/customTextInput.dart';
-import './sentOTPScreen.dart';
 
 class ForgetPwScreen extends StatelessWidget {
-  static const routeName = "/restpwScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +37,7 @@ class ForgetPwScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context)
-                          .pushReplacementNamed(SendOTPScreen.routeName);
+                          .pushReplacementNamed(AppRoutes.sendOTP);
                     },
                     child: Text("Send"),
                   ),

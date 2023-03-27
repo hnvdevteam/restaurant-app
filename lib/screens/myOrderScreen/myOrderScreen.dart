@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
-import 'package:monkey_app_demo/screens/checkoutScreen.dart';
+import 'package:monkey_app_demo/routes.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 
 import 'data.dart';
 
 class MyOrderScreen extends StatefulWidget {
-  static const routeName = "/myOrderScreen";
-
   @override
   State<MyOrderScreen> createState() => _MyOrderScreenState();
 }
@@ -220,7 +218,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pushNamed(CheckoutScreen.routeName);
+            Navigator.of(context).pushNamed(AppRoutes.checkout);
           },
           child: Text("Checkout"),
         ),

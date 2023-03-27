@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/routes.dart';
+
 import '../utils/helper.dart';
 import '../widgets/customTextInput.dart';
-import './introScreen.dart';
 
 class NewPwScreen extends StatelessWidget {
-  static const routeName = "/newPw";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +46,7 @@ class NewPwScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context)
-                          .pushReplacementNamed(IntroScreen.routeName);
+                          .pushReplacementNamed(AppRoutes.intro);
                     },
                     child: Text("Next"),
                   ),

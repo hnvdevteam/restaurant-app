@@ -4,7 +4,6 @@ import 'package:monkey_app_demo/utils/helper.dart';
 import 'package:monkey_app_demo/widgets/searchBar.dart';
 
 class DessertScreen extends StatelessWidget {
-  static const routeName = '/dessertScreen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

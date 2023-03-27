@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/routes.dart';
+
 import '../const/colors.dart';
-import '../screens/loginScreen.dart';
 import '../utils/helper.dart';
 import '../widgets/customTextInput.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static const routeName = '/signUpScreen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +50,7 @@ class SignUpScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(LoginScreen.routeName);
+                      .pushReplacementNamed(AppRoutes.login);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

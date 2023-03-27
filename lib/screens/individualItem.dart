@@ -4,7 +4,6 @@ import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 
 class IndividualItem extends StatelessWidget {
-  static const routeName = "/individualScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

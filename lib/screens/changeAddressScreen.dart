@@ -4,7 +4,6 @@ import 'package:monkey_app_demo/utils/helper.dart';
 import 'package:monkey_app_demo/widgets/searchBar.dart';
 
 class ChangeAddressScreen extends StatelessWidget {
-  static const routeName = "/changeAddressScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

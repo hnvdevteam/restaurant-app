@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
-import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
-import 'package:intl/intl.dart';
+import 'package:monkey_app_demo/routes.dart';
 
 import 'data.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const routeName = "/homeScreen";
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -55,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(MyOrderScreen.routeName);
+        Navigator.of(context).pushNamed(AppRoutes.myOrder);
       },
       child: Container(
         padding: EdgeInsets.only(top: 2, left: 2, right: 2, bottom: 10),

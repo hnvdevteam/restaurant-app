@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
-import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
+import 'package:monkey_app_demo/routes.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 
 class IntroScreen extends StatefulWidget {
-  static const routeName = "/introScreen";
 
   @override
   _IntroScreenState createState() => _IntroScreenState();
@@ -112,7 +111,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context)
-                            .pushReplacementNamed(HomeScreen.routeName);
+                            .pushReplacementNamed(AppRoutes.home);
                       },
                       child: Text("Next")),
                 ),

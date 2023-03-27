@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:monkey_app_demo/screens/forgetPwScreen.dart';
-import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
+import 'package:monkey_app_demo/routes.dart';
 
 import '../const/colors.dart';
-import '../screens/forgetPwScreen.dart';
-import '../screens/signUpScreen.dart';
 import '../utils/helper.dart';
 import '../widgets/customTextInput.dart';
 
 class LoginScreen extends StatelessWidget {
-  static const routeName = "/loginScreen";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +41,7 @@ class LoginScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(
-                          context, HomeScreen.routeName);
+                          context, AppRoutes.home);
                     },
                     child: Text("Login"),
                   ),
@@ -55,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context)
-                        .pushReplacementNamed(ForgetPwScreen.routeName);
+                        .pushReplacementNamed(AppRoutes.forgetPassword);
                   },
                   child: Text("Forget your password?"),
                 ),
@@ -129,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context)
-                        .pushReplacementNamed(SignUpScreen.routeName);
+                        .pushReplacementNamed(AppRoutes.signUp);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

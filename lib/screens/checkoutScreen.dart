@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
-import 'package:monkey_app_demo/screens/changeAddressScreen.dart';
-import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
+import 'package:monkey_app_demo/routes.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 import 'package:monkey_app_demo/widgets/customTextInput.dart';
 
 class CheckoutScreen extends StatelessWidget {
-  static const routeName = "/checkoutScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +57,7 @@ class CheckoutScreen extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context)
-                              .pushNamed(ChangeAddressScreen.routeName);
+                              .pushNamed(AppRoutes.forgetPassword);
                         },
                         child: Text(
                           "Change",
@@ -534,8 +532,7 @@ class CheckoutScreen extends StatelessWidget {
                                       child: TextButton(
                                         onPressed: () {
                                           Navigator.of(context)
-                                              .pushReplacementNamed(
-                                                  HomeScreen.routeName);
+                                              .pushReplacementNamed(AppRoutes.home);
                                         },
                                         child: Text(
                                           "Back To Home",

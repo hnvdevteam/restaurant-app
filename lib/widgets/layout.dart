@@ -5,8 +5,6 @@ import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen(this.currentIndex, {Key key}) : super(key: key);
-
-  static const routeName = "/LayoutScreen";
   final int currentIndex;
   @override
   _LayoutScreenState createState() => _LayoutScreenState();

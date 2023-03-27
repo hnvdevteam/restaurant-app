@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/routes.dart';
 
-import './landingScreen.dart';
 import '../utils/helper.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     _timer = Timer(Duration(milliseconds: 4000), () {
-      Navigator.of(context).pushReplacementNamed(LandingScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(AppRoutes.landing);
     });
     super.initState();
   }

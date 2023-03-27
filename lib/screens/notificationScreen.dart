@@ -3,7 +3,6 @@ import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 
 class NotificationScreen extends StatelessWidget {
-  static const routeName = "/notiScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
