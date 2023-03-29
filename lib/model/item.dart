@@ -26,7 +26,7 @@ class Table_Item {
 
 class Order_Item {
   final String name;
-  final String quantity;
+  final int quantity;
   final String price;
 
   const Order_Item({

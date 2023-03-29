@@ -32,6 +32,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
           title: appBarTitleManagement[_currentIndex],
         ),
         body: bottomWidgetManagement[_currentIndex],
-        bottomNavigationBar: CustomBottomNavBar(_currentIndex, onItemTapped: _handleItemTap));
+        bottomNavigationBar:
+            CustomBottomNavBar(_currentIndex, onItemTapped: _handleItemTap));
   }
 }

@@ -28,7 +28,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                     itemBuilder: (context, index) {
                       if (index == 0) {
                         return SizedBox(
-                          height: 40,
+                          height: 55,
                         );
                       } else {
                         final item = items[index - 1];
@@ -60,9 +60,10 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                                 style: Helper.getTheme(context).headline3,
                               ),
                             ),
-                            TextButton(
-                              onPressed: () {},
+                            GestureDetector(
+                              onTap: () {},
                               child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Icon(
                                     Icons.add,
@@ -145,34 +146,38 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 20),
                     ],
                   ),
                 ),
               ],
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ClipOval(
-                    child: Container(
-                      color: Color.fromARGB(200, 150, 150, 150),
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        color: Color.fromARGB(200, 150, 150, 150),
+                        child: Icon(
                           Icons.arrow_back_ios_rounded,
                         ),
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: GestureDetector(
+                      onTap: () {},
                       child: Container(
                         height: 40,
                         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -182,27 +187,37 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                           children: [
                             Text(
                               "Table",
-                              style: Helper.getTheme(context)
-                                  .headline6
-                                  .copyWith(color: Colors.black),
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
                             ),
                             SizedBox(
                               width: 15,
                             ),
-                            Image.asset(
-                              Helper.getAssetName("dropdown.png", "virtual"),
+                            Icon(
+                              Icons.arrow_drop_down,
                             )
                           ],
                         ),
                       ),
                     ),
                   ),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
                   ClipOval(
-                    child: Container(
-                      color: Color.fromARGB(200, 150, 150, 150),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.menu),
+                    child: Builder(
+                      builder: (context) => GestureDetector(
+                        onTap: () {
+                          Scaffold.of(context).openEndDrawer();
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          color: Color.fromARGB(200, 150, 150, 150),
+                          child: Icon(Icons.menu),
+                        ),
                       ),
                     ),
                   ),
@@ -212,15 +227,27 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 50,
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(AppRoutes.checkout);
-          },
-          child: Text("Checkout"),
+      endDrawer: Drawer(),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(25),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.checkout);
+            },
+            child: Container(
+              height: 50,
+              alignment: Alignment.center,
+              color: AppColor.orange,
+              child: Text(
+                "Checkout",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -240,7 +267,7 @@ Widget buildListTile(Order_Item items) => Dismissible(
         ),
       ),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 25),
+        padding: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
@@ -248,24 +275,88 @@ Widget buildListTile(Order_Item items) => Dismissible(
             ),
           ),
         ),
-        child: Row(
+        child: Column(
           children: [
-            Expanded(
-              child: Text(
-                items.name + " x" + items.quantity,
-                style: TextStyle(
-                  color: AppColor.primary,
-                  fontSize: 16,
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    items.name,
+                    style: TextStyle(
+                      color: AppColor.primary,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              ),
+                Text(
+                  items.price,
+                  style: TextStyle(
+                    color: AppColor.primary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ],
             ),
-            Text(
-              items.price,
-              style: TextStyle(
-                color: AppColor.primary,
-                fontSize: 16,
-                fontWeight: FontWeight.w900,
-              ),
+            SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      print("-");
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 40,
+                      width: 40,
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.remove,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 40,
+                  width: 40,
+                  child: Text(
+                    items.quantity.toString(),
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      print("+");
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 40,
+                      width: 40,
+                      color: Colors.green,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

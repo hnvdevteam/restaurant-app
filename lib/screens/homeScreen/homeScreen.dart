@@ -51,23 +51,23 @@ class _HomeScreenState extends State<HomeScreen> {
       boxColor = Colors.yellow;
     }
 
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed(AppRoutes.myOrder);
-      },
-      child: Container(
-        padding: EdgeInsets.only(top: 2, left: 2, right: 2, bottom: 10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: boxColor,
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.placeholder,
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            ),
-          ],
-        ),
+    return Container(
+      padding: EdgeInsets.only(top: 2, left: 2, right: 2, bottom: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: boxColor,
+        boxShadow: [
+          BoxShadow(
+            color: AppColor.placeholder,
+            offset: Offset(0, 5),
+            blurRadius: 10,
+          ),
+        ],
+      ),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pushNamed(AppRoutes.myOrder);
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(13),

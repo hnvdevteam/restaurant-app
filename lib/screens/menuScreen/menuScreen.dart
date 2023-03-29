@@ -84,22 +84,22 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
       );
 
-  Widget adddListTile() => GestureDetector(
-        onTap: () {},
-        child: Container(
-          height: 85,
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: AppColor.placeholder,
-                offset: Offset(0, 5),
-                blurRadius: 10,
-              )
-            ],
-          ),
+  Widget adddListTile() => Container(
+        height: 85,
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.placeholder,
+              offset: Offset(0, 5),
+              blurRadius: 10,
+            )
+          ],
+        ),
+        child: GestureDetector(
+          onTap: () {},
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
