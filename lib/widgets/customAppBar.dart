@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customDrawer.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -12,38 +11,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.white,
       foregroundColor: Colors.grey,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Builder(
-            builder: (context) => GestureDetector(
-              onTap: () {
-                Scaffold.of(context).openDrawer();
-              },
-              child: Icon(Icons.menu),
-            ),
-          ),
-          Text(
-            title,
-            style: Helper.getTheme(context).headline5,
-          ),
-          ClipOval(
-            child: Container(
-              height: 45,
-              width: 45,
-              child: Image.asset(
-                Helper.getAssetName(
-                  "user1.jpg",
-                  "real",
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ],
+      leading: GestureDetector(
+        onTap: () {
+          Scaffold.of(context).openDrawer();
+        },
+        child: Icon(Icons.menu),
       ),
-      drawer: CustomDrawer(),
+      title: Container(
+        alignment: Alignment.center,
+        width: double.infinity,
+        color: Colors.blueAccent,
+        child: Text(
+          title,
+          style: Helper.getTheme(context).headline5,
+        ),
+      ),
     );
   }
 
