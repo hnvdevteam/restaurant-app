@@ -50,33 +50,41 @@ class _MenuScreenState extends State<MenuScreen> {
                       width: 75, height: 75, fit: BoxFit.cover),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      items.name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                          child: Image.asset(
-                            Helper.getAssetName(
-                              "loc.png",
-                              "virtual",
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        items.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 5),
+                      Row(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                            child: Image.asset(
+                              Helper.getAssetName(
+                                "loc.png",
+                                "virtual",
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(width: 5),
-                        Text("Address: " + items.info),
-                      ],
-                    ),
-                  ],
+                          SizedBox(width: 5),
+                          Expanded(
+                            child: Text(
+                              "Address: " + items.info,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

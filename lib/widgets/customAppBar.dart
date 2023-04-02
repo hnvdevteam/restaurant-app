@@ -20,7 +20,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        color: Colors.blueAccent,
         child: Text(
           title,
           style: Helper.getTheme(context).headline5,

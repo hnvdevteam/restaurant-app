@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Color boxColor;
 
     if (items.reservation == "") {
-      boxColor = Colors.green;
+      boxColor = AppColor.placeholderBg;
     } else if (items.reservation == "Using") {
       boxColor = Colors.red;
     } else if (items.reservation == "Reserved") {

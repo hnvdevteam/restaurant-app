@@ -172,7 +172,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                     ),
                   ),
                   SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -282,6 +282,7 @@ Widget buildListTile(Order_Item items) => Dismissible(
                 Expanded(
                   child: Text(
                     items.name,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: AppColor.primary,
                       fontSize: 16,
