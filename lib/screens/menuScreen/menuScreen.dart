@@ -24,10 +24,8 @@ class _MenuScreenState extends State<MenuScreen> {
             return adddListTile();
           } else {
             final item = items[index];
-            return Container(
-              child: SlidableWidget(
-                child: buildListTile(item),
-              ),
+            return SlidableWidget(
+              child: buildListTile(item),
             );
           }
         },

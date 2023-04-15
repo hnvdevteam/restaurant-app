@@ -26,12 +26,14 @@ class Table_Item {
 
 class Order_Item {
   final String name;
-  final int quantity;
+  final String ingredients;
   final String price;
+  final int quantity;
 
   const Order_Item({
     @required this.name,
-    @required this.quantity,
+    @required this.ingredients,
     @required this.price,
+    @required this.quantity,
   });
 }

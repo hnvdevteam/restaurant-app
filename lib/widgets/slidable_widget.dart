@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:monkey_app_demo/const/colors.dart';
 
 // enum SlidableAction { archive, share, more, delete }
 
@@ -17,18 +16,11 @@ class SlidableWidget<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.placeholder,
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            )
-          ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           child: Slidable(
             actionPane: SlidableDrawerActionPane(),
             child: child,
