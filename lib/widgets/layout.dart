@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/layoutBar.dart';
-import 'package:monkey_app_demo/widgets/customAppBar.dart';
 import 'package:monkey_app_demo/widgets/customBottomNavBar.dart';
-import 'package:monkey_app_demo/widgets/customDrawer.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen(this.currentIndex, {Key key}) : super(key: key);
@@ -29,10 +27,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
-          title: appBarTitleManagement[_currentIndex],
-        ),
-        drawer: CustomDrawer(),
         body: bottomWidgetManagement[_currentIndex],
         bottomNavigationBar:
             CustomBottomNavBar(_currentIndex, onItemTapped: _handleItemTap));

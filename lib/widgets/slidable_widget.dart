@@ -14,43 +14,37 @@ class SlidableWidget<T> extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Slidable(
-            actionPane: SlidableDrawerActionPane(),
-            child: child,
+  Widget build(BuildContext context) => ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: Slidable(
+          actionPane: SlidableDrawerActionPane(),
+          child: child,
 
-            ///left side
-            actions: <Widget>[
-              IconSlideAction(
-                caption: 'Action',
-                color: Colors.blueAccent,
-                icon: Icons.add_business,
-                onTap: () {},
-              ),
-            ],
+          ///left side
+          actions: <Widget>[
+            IconSlideAction(
+              caption: 'Action',
+              color: Colors.blueAccent,
+              icon: Icons.add_business,
+              onTap: () {},
+            ),
+          ],
 
-            /// right side
-            secondaryActions: <Widget>[
-              IconSlideAction(
-                caption: 'More',
-                color: Colors.black45,
-                icon: Icons.more_horiz,
-                onTap: () {},
-              ),
-              IconSlideAction(
-                caption: 'Delete',
-                color: Colors.red,
-                icon: Icons.delete,
-                onTap: () {},
-              ),
-            ],
-          ),
+          /// right side
+          secondaryActions: <Widget>[
+            IconSlideAction(
+              caption: 'More',
+              color: Colors.black45,
+              icon: Icons.more_horiz,
+              onTap: () {},
+            ),
+            IconSlideAction(
+              caption: 'Delete',
+              color: Colors.red,
+              icon: Icons.delete,
+              onTap: () {},
+            ),
+          ],
         ),
       );
 }

@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:monkey_app_demo/const/colors.dart';
-import 'package:monkey_app_demo/utils/helper.dart';
 
 class SearchBar extends StatelessWidget {
   final String title;
+
   SearchBar({@required this.title});
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
       child: Container(
         height: 50,
         width: double.infinity,
-        decoration: ShapeDecoration(
-          shape: StadiumBorder(),
-          color: AppColor.placeholderBg,
-        ),
+        color: Color.fromARGB(40, 255, 153, 0),
         child: TextField(
           decoration: InputDecoration(
             border: InputBorder.none,
-            prefixIcon: Image.asset(
-              Helper.getAssetName("search_filled.png", "virtual"),
+            prefixIcon: Icon(
+              Icons.search,
+              color: Colors.orange,
             ),
             hintText: title,
             hintStyle: TextStyle(
-              color: AppColor.placeholder,
+              color: Color.fromARGB(166, 255, 153, 0),
               fontSize: 18,
             ),
             contentPadding: const EdgeInsets.only(
