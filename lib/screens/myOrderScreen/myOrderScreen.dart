@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
+import 'package:monkey_app_demo/widgets/customAppBarParent.dart';
+import 'package:monkey_app_demo/widgets/customAppBarSub.dart';
 import 'package:monkey_app_demo/widgets/slidable_widget.dart';
 
 import 'data.dart';
@@ -28,7 +30,9 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                 padding: const EdgeInsets.only(bottom: 120),
                 child: Column(
                   children: [
-                    customAppBar(context),
+                    CustomAppBarSub(
+                      title: "Order details",
+                    ),
                     Expanded(
                       child: ListView.separated(
                         padding: EdgeInsets.only(top: 10, bottom: 35),
@@ -56,212 +60,139 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
   }
 }
 
-Widget customAppBar(BuildContext context) => Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ClipRRect(
+Widget buildListTile(Order_Item items) => Container(
+      color: Colors.white,
+      height: 85,
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  color: Color.fromARGB(40, 255, 153, 0),
-                  child: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: Colors.orange,
-                  ),
+              child: Container(
+                height: 70,
+                width: 70,
+                child: Image.asset(
+                  Helper.getAssetName("hamburger.jpg", "real"),
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Builder(
-                builder: (context) => GestureDetector(
-                  onTap: () {
-                    Scaffold.of(context).openEndDrawer();
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    color: Color.fromARGB(40, 255, 153, 0),
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.orange,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 15),
-          child: Text(
-            "Order details",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
             ),
           ),
-        ),
-      ],
-    );
-
-Widget buildListTile(Order_Item items) => Dismissible(
-      key: UniqueKey(),
-      onDismissed: (direction) {},
-      direction: DismissDirection.endToStart,
-      background: Container(
-        color: Colors.red,
-        alignment: Alignment.centerRight,
-        child: Padding(
-          padding: const EdgeInsets.only(right: 20.0),
-          child: Icon(Icons.delete, color: Colors.white),
-        ),
-      ),
-      child: Container(
-        height: 85,
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 5),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Container(
-                  height: 70,
-                  width: 70,
-                  child: Image.asset(
-                    Helper.getAssetName("hamburger.jpg", "real"),
-                    fit: BoxFit.cover,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text(
+                    items.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      items.name,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                items.ingredients,
-                                style: TextStyle(
-                                  color: AppColor.secondary,
-                                  fontSize: 13,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                Container(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              items.ingredients,
+                              style: TextStyle(
+                                color: AppColor.secondary,
+                                fontSize: 13,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(
-                                height: 5,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "\$ " + items.price,
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 76, 197, 139),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
                               ),
-                              Text(
-                                "\$ " + items.price,
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 76, 197, 139),
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
+                      ),
 
-                        //Fix screen scale error.
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    print("-");
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: 35,
-                                    width: 35,
-                                    color: Color.fromARGB(60, 105, 240, 175),
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.greenAccent,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                height: 35,
-                                width: 35,
-                                child: Text(
-                                  items.quantity.toString(),
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    print("+");
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: 35,
-                                    width: 35,
+                      //Fix screen scale error.
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: GestureDetector(
+                                onTap: () {
+                                  print("-");
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 35,
+                                  width: 35,
+                                  color: Color.fromARGB(60, 105, 240, 175),
+                                  child: Icon(
+                                    Icons.remove,
                                     color: Colors.greenAccent,
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              height: 35,
+                              width: 35,
+                              child: Text(
+                                items.quantity.toString(),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: GestureDetector(
+                                onTap: () {
+                                  print("+");
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 35,
+                                  width: 35,
+                                  color: Colors.greenAccent,
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
 

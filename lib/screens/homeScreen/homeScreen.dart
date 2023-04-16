@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
 import 'package:monkey_app_demo/routes.dart';
+import 'package:monkey_app_demo/widgets/customAppBarParent.dart';
+import 'package:monkey_app_demo/widgets/searchBar.dart';
 
 import 'data.dart';
 
@@ -18,24 +20,50 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: GridView.builder(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          mainAxisSpacing: 15,
-          crossAxisSpacing: 15,
-          childAspectRatio: 1.2,
+    return Scaffold(
+      backgroundColor: AppColor.placeholderBg,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(10, 15, 10, 0),
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  CustomAppBarParent(
+                    title: "Table",
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SearchBar(title: "Table number"),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    child: GridView.builder(
+                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: 15,
+                        crossAxisSpacing: 15,
+                        childAspectRatio: 1.2,
+                      ),
+                      itemBuilder: (context, index) {
+                        if (index == items.length) {
+                          return adddListTile();
+                        } else {
+                          final item = items[index];
+                          return buildListTile(item);
+                        }
+                      },
+                      itemCount: items.length + 1,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        itemBuilder: (context, index) {
-          if (index == items.length) {
-            return adddListTile();
-          } else {
-            final item = items[index];
-            return buildListTile(item);
-          }
-        },
-        itemCount: items.length + 1,
       ),
     );
   }
@@ -44,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Color boxColor;
 
     if (items.reservation == "") {
-      boxColor = AppColor.placeholderBg;
+      boxColor = AppColor.placeholder;
     } else if (items.reservation == "Using") {
       boxColor = Colors.red;
     } else if (items.reservation == "Reserved") {
@@ -56,13 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: boxColor,
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.placeholder,
-            offset: Offset(0, 5),
-            blurRadius: 10,
-          ),
-        ],
       ),
       child: GestureDetector(
         onTap: () {
@@ -105,13 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.placeholder,
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            )
-          ],
         ),
         child: GestureDetector(
           onTap: () {},
@@ -120,8 +134,8 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                foregroundColor: Colors.white,
-                backgroundColor: AppColor.placeholder,
+                foregroundColor: Colors.orange,
+                backgroundColor: Color.fromARGB(40, 255, 153, 0),
                 child: Icon(
                   Icons.add,
                 ),

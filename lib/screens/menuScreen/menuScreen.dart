@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
+import 'package:monkey_app_demo/model/restaurant.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
+import 'package:monkey_app_demo/widgets/customAppBarParent.dart';
 import 'package:monkey_app_demo/widgets/slidable_widget.dart';
 
 import 'data.dart';
@@ -16,26 +18,45 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ListView.separated(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-        itemBuilder: (context, index) {
-          if (index == items.length) {
-            return adddListTile();
-          } else {
-            final item = items[index];
-            return SlidableWidget(
-              child: buildListTile(item),
-            );
-          }
-        },
-        separatorBuilder: (context, index) => Container(height: 10),
-        itemCount: items.length + 1,
+    return Scaffold(
+      backgroundColor: AppColor.placeholderBg,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(10, 15, 10, 0),
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  CustomAppBarParent(title: "Restaurant"),
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      itemBuilder: (context, index) {
+                        if (index == items.length) {
+                          return adddListTile();
+                        } else {
+                          final item = items[index];
+                          return SlidableWidget(
+                            child: buildListTile(item),
+                          );
+                        }
+                      },
+                      separatorBuilder: (context, index) =>
+                          Container(height: 10),
+                      itemCount: items.length + 1,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 
   Widget buildListTile(Item items) => Container(
+        color: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: GestureDetector(
           onTap: () {},
@@ -92,17 +113,9 @@ class _MenuScreenState extends State<MenuScreen> {
 
   Widget adddListTile() => Container(
         height: 85,
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.placeholder,
-              offset: Offset(0, 5),
-              blurRadius: 10,
-            )
-          ],
         ),
         child: GestureDetector(
           onTap: () {},
