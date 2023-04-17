@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
-import 'package:monkey_app_demo/widgets/customAppBarParent.dart';
 import 'package:monkey_app_demo/widgets/customAppBarSub.dart';
 import 'package:monkey_app_demo/widgets/slidable_widget.dart';
 
@@ -19,10 +18,10 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.placeholderBg,
+      backgroundColor: Color.fromRGBO(246, 246, 254, 1),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(10, 15, 10, 15),
+          padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
@@ -35,7 +34,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                     ),
                     Expanded(
                       child: ListView.separated(
-                        padding: EdgeInsets.only(top: 10, bottom: 35),
+                        padding: EdgeInsets.only(top: 10, bottom: 40),
                         itemBuilder: (context, index) {
                           final item = items[index];
                           return SlidableWidget(
@@ -116,7 +115,7 @@ Widget buildListTile(Order_Item items) => Container(
                             Text(
                               "\$ " + items.price,
                               style: TextStyle(
-                                color: Color.fromARGB(255, 76, 197, 139),
+                                color: Color.fromRGBO(62, 218, 134, 1),
                                 fontSize: 20,
                                 fontWeight: FontWeight.w900,
                               ),
@@ -124,8 +123,6 @@ Widget buildListTile(Order_Item items) => Container(
                           ],
                         ),
                       ),
-
-                      //Fix screen scale error.
                       Expanded(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -140,10 +137,10 @@ Widget buildListTile(Order_Item items) => Container(
                                   alignment: Alignment.center,
                                   height: 35,
                                   width: 35,
-                                  color: Color.fromARGB(60, 105, 240, 175),
+                                  color: Color.fromRGBO(235, 251, 241, 1),
                                   child: Icon(
                                     Icons.remove,
-                                    color: Colors.greenAccent,
+                                    color: Color.fromRGBO(62, 218, 134, 1),
                                   ),
                                 ),
                               ),
@@ -175,7 +172,7 @@ Widget buildListTile(Order_Item items) => Container(
                                   alignment: Alignment.center,
                                   height: 35,
                                   width: 35,
-                                  color: Colors.greenAccent,
+                                  color: Color.fromRGBO(62, 218, 134, 1),
                                   child: Icon(
                                     Icons.add,
                                     color: Colors.white,
@@ -199,9 +196,9 @@ Widget buildListTile(Order_Item items) => Container(
 Widget customBottomNavigationBar(BuildContext context) => ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Container(
-        height: 140,
+        height: 150,
         decoration: BoxDecoration(
-          color: Colors.greenAccent,
+          color: Color.fromRGBO(62, 218, 134, 1),
           borderRadius: BorderRadius.circular(10),
           shape: BoxShape.rectangle,
         ),
@@ -224,12 +221,18 @@ Widget customBottomNavigationBar(BuildContext context) => ClipRRect(
                           color: Colors.white,
                         ),
                       ),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         'Delivery Charge',
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
                         ),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                       Text(
                         'Discount',
@@ -239,7 +242,7 @@ Widget customBottomNavigationBar(BuildContext context) => ClipRRect(
                         ),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       Text(
                         'Total',
@@ -262,12 +265,18 @@ Widget customBottomNavigationBar(BuildContext context) => ClipRRect(
                           color: Colors.white,
                         ),
                       ),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Text(
                         '10\$',
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
                         ),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                       Text(
                         '20\$',
@@ -277,7 +286,7 @@ Widget customBottomNavigationBar(BuildContext context) => ClipRRect(
                         ),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       Text(
                         '150\$',
@@ -305,7 +314,7 @@ Widget customBottomNavigationBar(BuildContext context) => ClipRRect(
                     child: Text(
                       "Checkout",
                       style: TextStyle(
-                        color: Colors.greenAccent,
+                        color: Color.fromRGBO(62, 218, 134, 1),
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),

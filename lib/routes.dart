@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/screens/aboutScreen.dart';
 import 'package:monkey_app_demo/screens/changeAddressScreen.dart';
@@ -16,7 +15,7 @@ import 'package:monkey_app_demo/screens/moreScreen.dart';
 import 'package:monkey_app_demo/screens/myOrderScreen/myOrderScreen.dart';
 import 'package:monkey_app_demo/screens/newPwScreen.dart';
 import 'package:monkey_app_demo/screens/notificationScreen.dart';
-import 'package:monkey_app_demo/screens/offerScreen.dart';
+import 'package:monkey_app_demo/screens/foodList/offerScreen.dart';
 import 'package:monkey_app_demo/screens/paymentScreen.dart';
 import 'package:monkey_app_demo/screens/profileScreen.dart';
 import 'package:monkey_app_demo/screens/sentOTPScreen.dart';

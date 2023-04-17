@@ -24,20 +24,15 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColor.placeholderBg,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(10, 15, 10, 0),
+          padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
           child: Stack(
             children: [
               Column(
                 children: [
-                  CustomAppBarParent(
-                    title: "Table",
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SearchBar(title: "Table number"),
-                  SizedBox(
-                    height: 10,
+                  CustomAppBarParent(title: "Choose Your", subTitle: "Table"),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: SearchBar(title: "Table number"),
                   ),
                   Expanded(
                     child: GridView.builder(

@@ -57,7 +57,7 @@ class CustomAppBarSub extends StatelessWidget implements PreferredSizeWidget {
         Container(
           padding: EdgeInsets.only(top: 15),
           child: Text(
-            "Order details",
+            title,
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,

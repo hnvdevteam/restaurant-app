@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
-import 'package:monkey_app_demo/model/restaurant.dart';
 import 'package:monkey_app_demo/utils/helper.dart';
 import 'package:monkey_app_demo/widgets/customAppBarParent.dart';
 import 'package:monkey_app_demo/widgets/slidable_widget.dart';
@@ -22,12 +21,15 @@ class _MenuScreenState extends State<MenuScreen> {
       backgroundColor: AppColor.placeholderBg,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(10, 15, 10, 0),
+          padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
           child: Stack(
             children: [
               Column(
                 children: [
-                  CustomAppBarParent(title: "Restaurant"),
+                  CustomAppBarParent(
+                    title: "Choose Your",
+                    subTitle: "Restaurant",
+                  ),
                   Expanded(
                     child: ListView.separated(
                       padding: EdgeInsets.symmetric(vertical: 10),

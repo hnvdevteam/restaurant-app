@@ -5,8 +5,9 @@ import '../const/colors.dart';
 class CustomAppBarParent extends StatelessWidget
     implements PreferredSizeWidget {
   final String title;
+  final String subTitle;
 
-  CustomAppBarParent({this.title});
+  CustomAppBarParent({this.title, this.subTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomAppBarParent extends StatelessWidget
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Choose Your",
+              title,
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -25,7 +26,7 @@ class CustomAppBarParent extends StatelessWidget
               ),
             ),
             Text(
-              title,
+              subTitle,
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -54,7 +55,7 @@ class CustomAppBarParent extends StatelessWidget
                 color: Colors.white,
                 child: Icon(
                   Icons.notifications,
-                  color: Colors.greenAccent,
+                  color: Color.fromRGBO(62, 218, 134, 1),
                 ),
               ),
             ),
