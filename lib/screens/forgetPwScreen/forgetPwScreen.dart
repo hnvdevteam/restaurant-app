@@ -3,7 +3,7 @@ import 'package:monkey_app_demo/routes.dart';
 
 import '../../utils/helper.dart';
 import '../../widgets/customTextInput.dart';
-import '../sentOTPScreen.dart';
+import '../sentOTPScreen/sentOTPScreen.dart';
 
 class ForgetPwScreen extends StatelessWidget {
   @override

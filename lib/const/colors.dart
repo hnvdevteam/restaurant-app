@@ -6,7 +6,7 @@ class AppColor {
   static const secondary = Color(0xFF7C7D7E);
   static const placeholder = Color(0xFFB6B7B7);
   static const placeholderBg = Color(0xFFF2F2F2);
-  static const greenAccent = Colors.greenAccent;
+  static const greenAccent = Color.fromRGBO(62, 218, 134, 1);
   static const greenBg = Color.fromARGB(60, 105, 240, 175);
   static const white = Color.fromARGB(255, 255, 255, 255);
 }

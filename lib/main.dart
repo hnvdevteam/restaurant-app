@@ -1,7 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/routes.dart';
+import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
+import 'package:monkey_app_demo/screens/individualItem/individualItem.dart';
+import 'package:monkey_app_demo/screens/introScreen/introScreen.dart';
+import 'package:monkey_app_demo/screens/landingScreen/landingScreen.dart';
 import 'package:monkey_app_demo/screens/logInScreen/loginScreen.dart';
+import 'package:monkey_app_demo/screens/newPwScreen/newPwScreen.dart';
+import 'package:monkey_app_demo/screens/notificationScreen/notificationScreen.dart';
+import 'package:monkey_app_demo/screens/sentOTPScreen/sentOTPScreen.dart';
+import 'package:monkey_app_demo/screens/signUpScreen/signUpScreen.dart';
+import 'package:monkey_app_demo/screens/splashScreen/splashScreen.dart';
 import 'package:monkey_app_demo/theme.dart';
 import 'package:monkey_app_demo/widgets/layout.dart';
 
@@ -22,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: themeData,
-      home: LoginScreen(),
+      home: NewPwScreen(),
       routes: AppRoutes.routes,
     );
   }
