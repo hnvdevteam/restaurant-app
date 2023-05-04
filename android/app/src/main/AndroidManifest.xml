@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.monkey_app_demo">
    <application
+        android:name="${applicationName}"
         android:label="monkey_app_demo"
         android:icon="@mipmap/ic_launcher">
         <activity

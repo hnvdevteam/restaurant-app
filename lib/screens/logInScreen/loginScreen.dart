@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/routes.dart';
+import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
 
-import '../const/colors.dart';
-import '../utils/helper.dart';
-import '../widgets/customTextInput.dart';
+import '../../const/colors.dart';
+import '../../utils/helper.dart';
+import '../../widgets/customTextInput.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -35,15 +36,23 @@ class LoginScreen extends StatelessWidget {
                   hintText: "password",
                 ),
                 Spacer(),
-                SizedBox(
-                  height: 50,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, AppRoutes.home);
-                    },
-                    child: Text("Login"),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      width: double.infinity,
+                      color: Color.fromRGBO(62, 218, 134, 1),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
                 Spacer(),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/routes.dart';
 
-import '../utils/helper.dart';
-import '../widgets/customTextInput.dart';
+import '../../utils/helper.dart';
+import '../../widgets/customTextInput.dart';
+import '../sentOTPScreen.dart';
 
 class ForgetPwScreen extends StatelessWidget {
   @override
@@ -31,17 +32,26 @@ class ForgetPwScreen extends StatelessWidget {
                 Spacer(flex: 2),
                 CustomTextInput(hintText: "Email"),
                 Spacer(),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(AppRoutes.sendOTP);
-                    },
-                    child: Text("Send"),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      width: double.infinity,
+                      color: Color.fromRGBO(62, 218, 134, 1),
+                      child: Text(
+                        "Send",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),

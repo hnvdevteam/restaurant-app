@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/routes.dart';
+import 'package:monkey_app_demo/screens/logInScreen/loginScreen.dart';
 import 'package:monkey_app_demo/theme.dart';
 import 'package:monkey_app_demo/widgets/layout.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: themeData,
-      home: LayoutScreen(0),
+      home: LoginScreen(),
       routes: AppRoutes.routes,
     );
   }
