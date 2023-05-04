@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 import 'package:monkey_app_demo/model/item.dart';
-import 'package:monkey_app_demo/routes.dart';
-import 'package:monkey_app_demo/widgets/customAppBarParent.dart';
+import 'package:monkey_app_demo/widgets/customTextInput.dart';
+import 'package:monkey_app_demo/widgets/home/tableWidget.dart';
 import 'package:monkey_app_demo/widgets/searchBar.dart';
 
 import 'data.dart';
@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.placeholderBg,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 0),
@@ -29,26 +28,25 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Column(
                 children: [
-                  CustomAppBarParent(title: "Choose Your", subTitle: "Table"),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: SearchBar(title: "Table number"),
                   ),
                   Expanded(
                     child: GridView.builder(
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      padding: EdgeInsets.only(top: 1, bottom: 1),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
-                        mainAxisSpacing: 15,
+                        mainAxisSpacing: 25,
                         crossAxisSpacing: 15,
-                        childAspectRatio: 1.2,
+                        childAspectRatio: 1.1,
                       ),
                       itemBuilder: (context, index) {
                         if (index == items.length) {
-                          return adddListTile();
+                          return addListTile();
                         } else {
                           final item = items[index];
-                          return buildListTile(item);
+                          return TableWidget(item);
                         }
                       },
                       itemCount: items.length + 1,
@@ -63,74 +61,37 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildListTile(Table_Item items) {
-    Color boxColor;
-
-    if (items.reservation == "") {
-      boxColor = AppColor.placeholder;
-    } else if (items.reservation == "Using") {
-      boxColor = Colors.red;
-    } else if (items.reservation == "Reserved") {
-      boxColor = Colors.yellow;
-    }
-
-    return Container(
-      padding: EdgeInsets.only(top: 2, left: 2, right: 2, bottom: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: boxColor,
-      ),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.of(context).pushNamed(AppRoutes.myOrder);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(13),
-            color: Colors.white,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                items.id,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                items.total + ' ₫',
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                formattedDate,
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget adddListTile() => Container(
+  Widget addListTile() => Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
         ),
         child: GestureDetector(
-          onTap: () {},
+          onTap: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('AlertDialog Title'),
+              content: CustomTextInput(hintText: "asd",),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'OK'),
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                foregroundColor: Colors.orange,
-                backgroundColor: Color.fromARGB(40, 255, 153, 0),
+                foregroundColor: AppColor.greenAccent,
+                backgroundColor: AppColor.greenBg,
                 child: Icon(
                   Icons.add,
                 ),

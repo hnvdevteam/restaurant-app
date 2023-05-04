@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:monkey_app_demo/const/colors.dart';
 
 final ThemeData themeData = ThemeData(
+  scaffoldBackgroundColor: AppColor.white,
   fontFamily: "Metropolis",
   primarySwatch: Colors.red,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all(
-        AppColor.orange,
+        AppColor.greenAccent,
       ),
       shape: MaterialStateProperty.all(
         StadiumBorder(),
@@ -18,7 +19,7 @@ final ThemeData themeData = ThemeData(
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
       foregroundColor: MaterialStateProperty.all(
-        AppColor.orange,
+        AppColor.greenAccent,
       ),
     ),
   ),

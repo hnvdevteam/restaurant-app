@@ -102,10 +102,5 @@ class Data {
       total: '0',
       reservation: 'Reserved',
     ),
-    Table_Item(
-      id: '14',
-      total: '0',
-      reservation: '',
-    ),
   ];
 }

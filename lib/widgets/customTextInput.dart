@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../const/colors.dart';
 
 class CustomTextInput extends StatelessWidget {
@@ -18,9 +19,14 @@ class CustomTextInput extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 50,
-      decoration: ShapeDecoration(
-        color: AppColor.placeholderBg,
-        shape: StadiumBorder(),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.grey, width: 0.05),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+              color: Color.fromARGB(105, 194, 216, 235), spreadRadius: 0.1, blurRadius: 20)
+        ],
       ),
       child: TextField(
         decoration: InputDecoration(

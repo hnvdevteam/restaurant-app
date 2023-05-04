@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkey_app_demo/const/colors.dart';
 
 class SearchBar extends StatelessWidget {
   final String title;
@@ -12,17 +13,17 @@ class SearchBar extends StatelessWidget {
       child: Container(
         height: 50,
         width: double.infinity,
-        color: Color.fromARGB(40, 255, 153, 0),
+        color: AppColor.greenBg,
         child: TextField(
           decoration: InputDecoration(
             border: InputBorder.none,
             prefixIcon: Icon(
               Icons.search,
-              color: Colors.orange,
+              color: AppColor.greenAccent,
             ),
             hintText: title,
             hintStyle: TextStyle(
-              color: Color.fromARGB(166, 255, 153, 0),
+              color: AppColor.greenAccent,
               fontSize: 18,
             ),
             contentPadding: const EdgeInsets.only(
