@@ -1,37 +1,45 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:monkey_app_demo/core/storage_state.dart';
 import 'package:monkey_app_demo/routes.dart';
 import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
-import 'package:monkey_app_demo/screens/individualItem/individualItem.dart';
-import 'package:monkey_app_demo/screens/introScreen/introScreen.dart';
-import 'package:monkey_app_demo/screens/landingScreen/landingScreen.dart';
 import 'package:monkey_app_demo/screens/logInScreen/loginScreen.dart';
-import 'package:monkey_app_demo/screens/newPwScreen/newPwScreen.dart';
-import 'package:monkey_app_demo/screens/notificationScreen/notificationScreen.dart';
-import 'package:monkey_app_demo/screens/sentOTPScreen/sentOTPScreen.dart';
-import 'package:monkey_app_demo/screens/signUpScreen/signUpScreen.dart';
-import 'package:monkey_app_demo/screens/splashScreen/splashScreen.dart';
 import 'package:monkey_app_demo/theme.dart';
-import 'package:monkey_app_demo/widgets/layout.dart';
 
-import 'firebase_options.dart';
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+void main() {
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
   );
-  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends HookConsumerWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Restaurant',
+      debugShowCheckedModeBanner: false,
       theme: themeData,
-      home: NewPwScreen(),
+      home: ref
+          .watch(
+            getIsAuthenticatedProvider,
+          )
+          .when(
+            data: (bool isAuthenticated) =>
+                isAuthenticated ? HomeScreen() : const LoginScreen(),
+            loading: () {
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            },
+            error: (error, stacktrace) => const LoginScreen(),
+          ),
       routes: AppRoutes.routes,
     );
   }

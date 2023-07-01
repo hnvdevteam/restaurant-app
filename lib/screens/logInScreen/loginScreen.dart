@@ -1,14 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:monkey_app_demo/core/auth_state.dart';
+import 'package:monkey_app_demo/core/storage_state.dart';
 import 'package:monkey_app_demo/routes.dart';
-import 'package:monkey_app_demo/screens/homeScreen/homeScreen.dart';
 
 import '../../const/colors.dart';
 import '../../utils/helper.dart';
 import '../../widgets/customTextInput.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends HookConsumerWidget {
+  const LoginScreen({key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    ref.listen(authErrorMessageProvider, (prev, next) {
+      if (next.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(next),
+          ),
+        );
+      } else {
+        emailController.text = '';
+        passwordController.text = '';
+      }
+    });
+
     return Scaffold(
       body: Container(
         height: Helper.getScreenHeight(context),
@@ -30,16 +51,31 @@ class LoginScreen extends StatelessWidget {
                 Spacer(),
                 CustomTextInput(
                   hintText: "Your email",
+                  controller: emailController,
                 ),
                 Spacer(),
                 CustomTextInput(
                   hintText: "password",
+                  controller: passwordController,
+                  obscureText: true,
                 ),
                 Spacer(),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(25),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () async {
+                      if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+                        final authArgs = AuthArgs(
+                          email: emailController.text,
+                          password: passwordController.text
+                        );
+                        ref.read(authLoginProvider(authArgs));
+                        final isAuthenticated = ref.read(getIsAuthenticatedProvider);
+                        if (isAuthenticated.value) {
+                          Navigator.pushNamed(context, 'Home');
+                        }
+                      }
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       height: 50,
