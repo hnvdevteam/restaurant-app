@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:monkey_app_demo/core/auth_state.dart';
+import 'package:monkey_app_demo/core/models/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: constant_identifier_names
@@ -11,7 +12,7 @@ final sharedPrefProvider = Provider((_) async {
   return await SharedPreferences.getInstance();
 });
 
-final setAuthStateProvider = StateProvider<AuthResponse>(
+final setAuthStateProvider = StateProvider<LoginResponse>(
   (ref) => null,
 );
 

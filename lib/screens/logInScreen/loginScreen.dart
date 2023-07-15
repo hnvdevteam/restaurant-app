@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:monkey_app_demo/core/auth_state.dart';
+import 'package:monkey_app_demo/core/models/login.dart';
 import 'package:monkey_app_demo/core/storage_state.dart';
 import 'package:monkey_app_demo/routes.dart';
 
@@ -65,11 +66,11 @@ class LoginScreen extends HookConsumerWidget {
                   child: GestureDetector(
                     onTap: () async {
                       if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-                        final authArgs = AuthArgs(
+                        final req = LoginRequest(
                           email: emailController.text,
                           password: passwordController.text
                         );
-                        ref.read(authLoginProvider(authArgs));
+                        ref.read(authLoginProvider(req));
                         final isAuthenticated = ref.read(getIsAuthenticatedProvider);
                         if (isAuthenticated.value) {
                           Navigator.pushNamed(context, 'Home');
